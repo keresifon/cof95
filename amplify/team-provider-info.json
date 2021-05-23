@@ -1,0 +1,36 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cof95-dev-180616-authRole",
+      "UnauthRoleArn": "arn:aws:iam::823508612023:role/amplify-cof95-dev-180616-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::823508612023:role/amplify-cof95-dev-180616-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-cof95-dev-180616-deployment",
+      "UnauthRoleName": "amplify-cof95-dev-180616-unauthRole",
+      "StackName": "amplify-cof95-dev-180616",
+      "StackId": "arn:aws:cloudformation:us-east-1:823508612023:stack/amplify-cof95-dev-180616/33883270-bbe9-11eb-a36a-0a63bc702c35",
+      "AmplifyAppId": "d2ynndu1asyba6"
+    },
+    "categories": {
+      "function": {
+        "cof95PostConfirmation": {
+          "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
+          "s3Key": "amplify-builds/cof95PostConfirmation-675a773372486e475539-build.zip"
+        }
+      },
+      "auth": {
+        "cof95": {}
+      },
+      "storage": {
+        "User2am3kcsfxrhbxotezbfw5dy2pmdev": {
+          "tableName": "User-2am3kcsfxrhbxotezbfw5dy2pm-dev",
+          "region": "us-east-1",
+          "arn": "arn:aws:dynamodb:us-east-1:823508612023:table/User-2am3kcsfxrhbxotezbfw5dy2pm-dev",
+          "streamArn": "arn:aws:dynamodb:us-east-1:823508612023:table/User-2am3kcsfxrhbxotezbfw5dy2pm-dev/stream/2021-05-23T17:33:04.450",
+          "partitionKeyName": "id",
+          "partitionKeyType": "S"
+        }
+      }
+    }
+  }
+}

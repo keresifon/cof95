@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "cof95",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcof95",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
