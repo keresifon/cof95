@@ -16,6 +16,18 @@
         "cof95PostConfirmation": {
           "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
           "s3Key": "amplify-builds/cof95PostConfirmation-675a773372486e475539-build.zip"
+        },
+        "cof5users": {
+          "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
+          "s3Key": "amplify-builds/cof5users-35643876386d362f526e-build.zip"
+        },
+        "items": {
+          "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
+          "s3Key": "amplify-builds/items-3831666839776f436165-build.zip"
+        },
+        "memberfunction": {
+          "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
+          "s3Key": "amplify-builds/memberfunction-4b6a6d65764550307272-build.zip"
         }
       },
       "auth": {

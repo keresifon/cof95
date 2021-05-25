@@ -1,15 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from './Layout';
-import Amplify from 'aws-amplify';
+import Amplify, { API , Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { Container, Row, Col, Card  } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 Amplify.configure(awsconfig);
 
+
 function Profile(props) {
+	const [user, setUser] = useState('');
+	//const [ lastName, setLastName] = useState('');
+	const [members, setMembers] = useState([]);
+	
+	useEffect(() => {
+		async function getUserInfo() {
+			const cuser = await Auth.currentAuthenticatedUser();
+			const user = cuser.attributes.sub
+			setUser(user);
+			
+		  }
+		getUserInfo();
+  }, []);
+
+	
+	
+	useEffect(() => {
+		API.get('members', '/members/id').then((userRes) => 
+		 {
+			setMembers([...members , ...userRes])
+		});
+	}, []);
+	//console.log(setUsers);
+	
 	return (
 		<Layout>
+			<div>
+				<div></div>
+				<ul>
+					{members.map((member) => (
+						<li>{member.id}</li>
+					))}
+				</ul>
+			</div>
 			<Container className="py-3">
 				<Row>
 					<Col sm={3}>
@@ -19,7 +52,7 @@ function Profile(props) {
 								src="https://res.cloudinary.com/kwesiblack/image/upload/v1621029235/cof95/IMG_3846_iyxafe.jpg"
 							/>
 							<Card.Body>
-								<Card.Text>NickName: Etong</Card.Text>
+								<Card.Text>NickName: Etong{user}</Card.Text>
 							</Card.Body>
 						</Card>
 					</Col>
