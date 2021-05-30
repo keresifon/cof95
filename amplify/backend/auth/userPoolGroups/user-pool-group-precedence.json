@@ -1,6 +1,10 @@
 [
-  {
-    "groupName": "Admin",
-    "precedence": 1
-  }
+    {
+        "groupName": "Admin",
+        "precedence": 1
+    },
+    {
+        "groupName": "member",
+        "precedence": 2
+    }
 ]

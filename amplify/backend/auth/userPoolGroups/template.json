@@ -95,6 +95,60 @@
         },
      
     
+        "memberGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "member",
+              "Precedence" : 2,
+              
+              "RoleArn" : {
+                "Fn::GetAtt": [
+                    "memberGroupRole",
+                    "Arn"
+                ]
+              },
+              
+              "UserPoolId" : {
+                "Ref": "authcof95UserPoolId"
+              }
+            }
+        },
+        
+        "memberGroupRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName":{
+                    "Fn::Join": [
+                        "",
+                        [
+                          {
+                            "Ref": "authcof95UserPoolId"
+                          },
+                          "-memberGroupRole"
+                        ]
+                    ]
+                },
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Federated": "cognito-identity.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRoleWithWebIdentity",
+                            "Condition": {
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authcof95IdentityPoolId"}},
+                              "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+     
+    
     
         "LambdaExecutionRole": {
             "Type": "AWS::IAM::Role",
@@ -183,7 +237,10 @@
                                     "Action": [
                                         "iam:PassRole"
                                     ],
-                                    "Resource": "*"
+                                    "Resource": [
+                                        { "Ref": "AuthRoleArn" },
+                                        { "Ref": "UnauthRoleArn" }
+                                    ]
                                 }
                             ]
                         }
@@ -233,7 +290,6 @@
                                 "    cognitoidentity.setIdentityPoolRoles(params).promise();",
                                 "    response.send(event, context, response.SUCCESS, {message: 'Successfully updated identity pool.'})",
                                 "    } catch(err) {",
-
                                 "        response.send(event, context, response.FAILED, {message: 'Error updating identity pool'});",
                                 "    }",
                                 "   };",
@@ -299,6 +355,17 @@
             "Value": {
                 "Fn::GetAtt": [
                     "AdminGroupRole",
+                    "Arn"
+                ]
+            }
+        
+        },
+        
+      
+        "memberGroupRole": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "memberGroupRole",
                     "Arn"
                 ]
             }

@@ -47,12 +47,13 @@
     },
     "useDefault": "manual",
     "thirdPartyAuth": false,
-    "userPoolGroups": true,
+    "userPoolGroups": false,
     "adminQueries": false,
     "triggers": "{\n  \"PostConfirmation\": [\n    \"custom\"\n  ]\n}",
     "hostedUI": false,
     "userPoolGroupList": [
-        "Admin"
+        "Admin",
+        "member"
     ],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
@@ -72,5 +73,6 @@
                 "Name"
             ]
         }
-    ]
+    ],
+    "authProviders": []
 }
