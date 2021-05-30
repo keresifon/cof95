@@ -11,6 +11,7 @@ Amplify.configure(awsconfig);
 
 function ProfileUpdate(props) {
 	const [user, setUser] = useState('');
+	
 	//const [member, setMember] = useState('');
 	//const [ lastName, setLastName] = useState('');
 	const [fullName, setFullName] = useState('');
