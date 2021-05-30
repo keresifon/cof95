@@ -1,8 +1,8 @@
 {
   "paths": [
     {
-      "name": "/items",
-      "lambdaFunction": "items",
+      "name": "/accounts",
+      "lambdaFunction": "co95accfuntion",
       "privacy": {
         "private": true,
         "auth": [
@@ -13,14 +13,14 @@
           "/DELETE"
         ]
       },
-      "policyResourceName": "/items"
+      "policyResourceName": "/accounts"
     }
   ],
-  "resourceName": "items",
-  "apiName": "items",
+  "resourceName": "accounts",
+  "apiName": "accounts",
   "functionArns": [
     {
-      "lambdaFunction": "items"
+      "lambdaFunction": "co95accfuntion"
     }
   ],
   "privacy": {
@@ -32,7 +32,7 @@
   "dependsOn": [
     {
       "category": "function",
-      "resourceName": "items",
+      "resourceName": "co95accfuntion",
       "attributes": [
         "Name",
         "Arn"

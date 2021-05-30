@@ -24,33 +24,14 @@
         }
       ]
     },
-    "items": {
+    "co95accfuntion": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "items",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "memberfunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "User2am3kcsfxrhbxotezbfw5dy2pmdev",
+          "resourceName": "accounts",
           "attributes": [
             "Name",
             "Arn"
@@ -113,27 +94,13 @@
         }
       }
     },
-    "items": {
+    "accounts": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "items",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "members": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "memberfunction",
+          "resourceName": "co95accfuntion",
           "attributes": [
             "Name",
             "Arn"
@@ -149,7 +116,7 @@
       "providerPlugin": "awscloudformation",
       "dependsOn": []
     },
-    "items": {
+    "accounts": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }

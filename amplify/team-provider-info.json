@@ -21,13 +21,9 @@
           "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
           "s3Key": "amplify-builds/cof5users-35643876386d362f526e-build.zip"
         },
-        "items": {
+        "co95accfuntion": {
           "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
-          "s3Key": "amplify-builds/items-3831666839776f436165-build.zip"
-        },
-        "memberfunction": {
-          "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
-          "s3Key": "amplify-builds/memberfunction-4b6a6d65764550307272-build.zip"
+          "s3Key": "amplify-builds/co95accfuntion-54456579384e4d6a4e35-build.zip"
         }
       },
       "auth": {

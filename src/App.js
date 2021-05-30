@@ -6,6 +6,7 @@ import Reunion from './component/Reunion';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import Profile from './component/Profile'
+import ProfileUpdate from './component/ProfileUpdate';
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 								<Route path="/register" component={Register} />
 								<Route path="/checkout" component={Checkout} />
 								<Route path="/addproduct" component={AddProduct} />*/}
+								<Route path="/uprofile" component={ProfileUpdate} /> 
 								<Route path="/profile" component={Profile} /> 
 							 <Route path="/reunion" component={Reunion} />
 

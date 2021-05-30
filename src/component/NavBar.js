@@ -21,6 +21,7 @@ function NavBar(props) {
 							<Nav.Link as={Link} to="/profile">
 								Profile
 							</Nav.Link>
+						
 						</Nav>
 					</div>
 					<div className="container mr-right">

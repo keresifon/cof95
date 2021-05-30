@@ -16,13 +16,13 @@
     "s3Key": {
       "Type": "String"
     },
-    "storageUser2am3kcsfxrhbxotezbfw5dy2pmdevName": {
+    "storageaccountsName": {
       "Type": "String",
-      "Default": "storageUser2am3kcsfxrhbxotezbfw5dy2pmdevName"
+      "Default": "storageaccountsName"
     },
-    "storageUser2am3kcsfxrhbxotezbfw5dy2pmdevArn": {
+    "storageaccountsArn": {
       "Type": "String",
-      "Default": "storageUser2am3kcsfxrhbxotezbfw5dy2pmdevArn"
+      "Default": "storageaccountsArn"
     }
   },
   "Conditions": {
@@ -55,12 +55,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "memberfunction",
+            "co95accfuntion",
             {
               "Fn::Join": [
                 "",
                 [
-                  "memberfunction",
+                  "co95accfuntion",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +97,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cof95LambdaRole2412675b",
+            "cof95LambdaRole3e1c6fe6",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cof95LambdaRole2412675b",
+                  "cof95LambdaRole3e1c6fe6",
                   "-",
                   {
                     "Ref": "env"
@@ -182,14 +182,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storageUser2am3kcsfxrhbxotezbfw5dy2pmdevArn"
+                  "Ref": "storageaccountsArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storageUser2am3kcsfxrhbxotezbfw5dy2pmdevArn"
+                        "Ref": "storageaccountsArn"
                       },
                       "index/*"
                     ]
