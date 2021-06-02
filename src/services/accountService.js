@@ -1,7 +1,8 @@
 import { API } from 'aws-amplify';
 
 export function getAccounts() {
-	return API.get('accounts', '/accounts/id');
+	//return API.get('accounts', '/accounts/id');
+	return API.get('users', '/users/id');
 }
 
 	
@@ -20,5 +21,6 @@ export function saveAccount(user, fullName, nickName, phone, address, bio) {
 		},
 	};
 
-	return  API.put('accounts', '/accounts', myInit);
+	//return  API.put('accounts', '/accounts', myInit);
+	return  API.put('users', '/users', myInit);
 }

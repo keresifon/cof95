@@ -14,17 +14,20 @@ function Profile(props) {
 	const [user, setUser] = useState('');
 	//const [member, setMember] = useState('');
 	//const [ lastName, setLastName] = useState('');
+	const [groups, setGroups]  = useState('');
 	const [members, setMembers] = useState([]);
 
 	useEffect(() => {
 		async function getUserInfo() {
 			const cuser = await Auth.currentAuthenticatedUser();
+			const groups = cuser.signInUserSession.accessToken.payload["cognito:groups"];
+            setGroups(groups);
 			const user = cuser.attributes.sub;
 			setUser(user);
 		}
 		getUserInfo();
 	}, []);
-
+	
 	useEffect(() => {
 		async function gAccount() {
 			const data = await getAccounts();
@@ -33,6 +36,11 @@ function Profile(props) {
 		}
 		gAccount();
 	}, []);
+
+
+//    const test = () =>  groups.includes('member') ? 'Yes' : 'No'; 
+//    console.log(test(true));
+//    console.log(test(false));
 
 	const member = _.filter(members, function (mem) {
 		return mem.id === user;

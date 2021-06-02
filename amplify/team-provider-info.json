@@ -24,6 +24,10 @@
         "co95accfuntion": {
           "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
           "s3Key": "amplify-builds/co95accfuntion-54456579384e4d6a4e35-build.zip"
+        },
+        "users": {
+          "deploymentBucketName": "amplify-cof95-dev-180616-deployment",
+          "s3Key": "amplify-builds/users-6f6556493472786d6a65-build.zip"
         }
       },
       "auth": {

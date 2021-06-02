@@ -1,0 +1,58 @@
+{
+  "paths": [
+    {
+      "name": "/users",
+      "lambdaFunction": "users",
+      "privacy": {
+        "userPoolGroups": {
+          "member": [
+            "/POST",
+            "/GET",
+            "/PUT",
+            "/PATCH",
+            "/DELETE"
+          ]
+        }
+      },
+      "policyResourceName": "/users"
+    }
+  ],
+  "resourceName": "users",
+  "apiName": "users",
+  "authResourceName": "cof95",
+  "functionArns": [
+    {
+      "lambdaFunction": "users"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-cof95-dev-180616-authRole",
+    "unAuthRoleName": "amplify-cof95-dev-180616-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "users",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    },
+    {
+      "category": "auth",
+      "resourceName": "cof95",
+      "attributes": [
+        "UserPoolId"
+      ]
+    },
+    {
+      "category": "auth",
+      "resourceName": "userPoolGroups",
+      "attributes": [
+        "memberGroupRole"
+      ]
+    }
+  ]
+}
