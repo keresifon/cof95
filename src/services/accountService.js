@@ -18,6 +18,7 @@ export function saveAccount(user, fullName, nickName, phone, address, bio) {
 			phone: phone,
 			address: address,
 			bio: bio,
+		
 		},
 	};
 

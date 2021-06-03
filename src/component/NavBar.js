@@ -18,6 +18,10 @@ function NavBar(props) {
 							<Nav.Link as={Link} to="/">
 								Home
 							</Nav.Link>
+							<Nav.Link as={Link} to="/reunion">
+								Landing
+							</Nav.Link>
+							
 							<Nav.Link as={Link} to="/profile">
 								Profile
 							</Nav.Link>
