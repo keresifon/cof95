@@ -23,12 +23,12 @@ function Welcome(props) {
 					<div class="col-lg-6">
 						<img src="src/img/icons/megaphone.svg" class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
 						<h2 class="display-4 mb-3">Welcome</h2>
-						<p class="lead fs-lg">If you have just signed up your account is yet to be fully activated so you will not be able to update your profile</p>
-						<p class="mb-6">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+						<p class="lead fs-lg">If you have just signed up your account is not activated so you will not be able to update your profile</p>
+						<p class="mb-6">If your account is activated use the links below to access and update your profile</p>
 						<div class="row gy-3 gx-xl-8">
 							<div class="col-xl-6">
 								<ul class="icon-list bullet-bg bullet-soft-primary mb-0">
-									<li><span><i class="uil uil-check"></i></span><span>Aenean eu leo quam ornare curabitur blandit tempus.</span></li>
+									<li><span><i class="uil uil-check"></i></span><span>Go to My Profile.</span></li>
 									<li class="mt-3"><span><i class="uil uil-check"></i></span><span>Nullam quis risus eget urna mollis ornare donec elit.</span></li>
 								</ul>
 							</div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 //import { Alert } from 'react-bootstrap';
 //import ReactTextRotator from 'react-text-rotator';
 //import { FaFacebook, FaTwitter, FaGithub, FaInstagram, FaAws, FaLinkedin } from 'react-icons/fa';
@@ -15,11 +17,11 @@ function Home(props) {
 			<div class="container pt-12 pt-md-16 text-center">
 				<div class="row">
 					<div class="col-lg-8 col-xxl-7 mx-auto text-center" data-cues="slideInDown" data-group="page-title" data-delay="600">
-						<h2 class="fs-16 text-uppercase ls-xl text-dark mb-4">FGCE Class of 95</h2>
+						<h2 class="fs-16 text-uppercase ls-xl text-dark mb-4">"Boys and girls in unity serve"</h2>
 						<h1 class="display-1 fs-58 mb-7">FGCE Class of 95</h1>
 						<div class="d-flex justify-content-center" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
-							<span><a href="#" class="btn btn-lg btn-primary rounded-pill me-2">Explore Now</a></span>
-							<span><a href="#" class="btn btn-lg btn-outline-primary rounded-pill">Contact Us</a></span>
+							<span><Link to="/" class="btn btn-lg btn-primary rounded-pill me-2">Explore Now</Link></span>
+							<span><Link to="/" class="btn btn-lg btn-outline-primary rounded-pill">Contact Us</Link></span>
 						</div>
 					</div>
 					{/* <!--/column --> */}
