@@ -2,7 +2,7 @@
 import './App.scss';
 import { Switch, Route } from 'react-router-dom';
 import Home from './component/Home';
-import Reunion from './component/Reunion';
+import Welcome from './component/Welcome';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import Profile from './component/Profile'
@@ -26,7 +26,7 @@ function App() {
 								<Route path="/addproduct" component={AddProduct} />*/}
 								<Route path="/uprofile" component={ProfileUpdate} /> 
 								<Route path="/profile" component={Profile} /> 
-							 <Route path="/reunion" component={Reunion} />
+							 <Route path="/welcome" component={Welcome} />
 
 					<Route path="/" component={Home} />
 				</Switch>
