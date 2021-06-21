@@ -7,42 +7,77 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
 function NavBar(props) {
 	return (
-		<Container fluid>
-			<Navbar className="bg-mongoose-ecom border-bottom border-secondary ">
-				{/* <Button className = "harmburger">&#9776;</Button> */}
-				<Navbar.Brand className="display-1">ClassOf95</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<div className="container">
-						<Nav className="mr-auto ">
-							<Nav.Link as={Link} to="/">
-								Home
-							</Nav.Link>
-							<Nav.Link as={Link} to="/reunion">
-								Landing
-							</Nav.Link>
-							
-							<Nav.Link as={Link} to="/profile">
-								Profile
-							</Nav.Link>
-						
-						</Nav>
+		<div>
+			{' '}
+			<header class="wrapper bg-gray">
+				<nav class="navbar fancy navbar-expand-lg navbar-light caret-none navbar-bg-light">
+					<div class="container">
+						<div class="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
+							<div class="navbar-brand w-100">
+								<a href="index.html">
+									<img src="src/img/logo-dark.png" srcset="src/img/logo-dark@2x.png 2x" alt="" />
+								</a>
+							</div>
+							<div class="navbar-collapse offcanvas-nav d-lg-flex mx-lg-auto">
+								<div class="offcanvas-header d-lg-none d-xl-none">
+									<a href="index.html">
+										<img
+											src="src/img/logo-light.png"
+											srcset="src/img/logo-light@2x.png 2x"
+											alt=""
+										/>
+									</a>
+									<button
+										type="button"
+										class="btn-close btn-close-white offcanvas-close offcanvas-nav-close"
+										aria-label="Close"
+									></button>
+								</div>
+								<ul class="navbar-nav">
+									<li class="nav-item">
+										<Link to="/" class="nav-link">
+											Home
+										</Link>
+									</li>
+									<li class="nav-item">
+										<Link to="/welcome" class="nav-link">
+											Landing
+										</Link>
+									</li>
+									<li class="nav-item">
+										<Link to="/profile" class="nav-link">
+											Profile
+										</Link>
+									</li>
+									
+								</ul>
+								{/* <!-- /.navbar-nav --> */}
+							</div>
+							{/* <!-- /.navbar-collapse --> */}
+							<div class="navbar-other w-100 d-flex ms-auto">
+								<ul class="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
+								<li class="nav-item">
+										<AmplifySignOut />
+									</li>
+									<li class="nav-item d-lg-none">
+										<div class="navbar-hamburger">
+											<button class="hamburger animate plain" data-toggle="offcanvas-nav">
+												<span></span>
+											</button>
+										</div>
+									</li>
+								</ul>
+								{/* <!-- /.navbar-nav --> */}
+							</div>
+							{/* <!-- /.navbar-other --> */}
+						</div>
+						{/* <!-- /.navbar-collapse-wrapper --> */}
 					</div>
-					<div className="container mr-right">
-						<Nav className="mr-right">
-							<AmplifySignOut /> 
-						</Nav>
-					</div>
-					{/* <div>
-					<Form inline>
-						
-						<FormControl type="text" placeholder="Search" className="mr-sm-1" />
-						<Button variant="outline-light" className="mb-2" >Search</Button>
-					</Form>
-					</div> */}
-				</Navbar.Collapse>
-			</Navbar>
-		</Container>
+					{/* <!-- /.container --> */}
+				</nav>
+				{/* <!-- /.navbar --> */}
+			</header>
+		</div>
 	);
 }
 
