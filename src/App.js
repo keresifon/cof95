@@ -5,15 +5,15 @@ import Home from './component/Home';
 import Welcome from './component/Welcome';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer';
-import Profile from './component/Profile'
+import Profile from './component/Profile';
 import ProfileUpdate from './component/ProfileUpdate';
+import UpdateTest from './component/UpdateTest';
 
 function App() {
 	return (
 		<>
-			
 			<div className="vh-100">
-			<NavBar /> 
+				<NavBar />
 				<Switch>
 					{/*	<Route path="/products/:id" component={ProductDetails} />
 								<Route path="/product/:category" component={ProductCategory} />
@@ -24,16 +24,14 @@ function App() {
 								<Route path="/register" component={Register} />
 								<Route path="/checkout" component={Checkout} />
 								<Route path="/addproduct" component={AddProduct} />*/}
-								<Route path="/uprofile" component={ProfileUpdate} /> 
-								<Route path="/profile" component={Profile} /> 
-							 <Route path="/welcome" component={Welcome} />
-
+					<Route path="/uprofile" component={ProfileUpdate} />
+					<Route path="/profile" component={Profile} />
+					<Route path="/welcome" component={Welcome} />
+					<Route path="/test" component={UpdateTest} />
 					<Route path="/" component={Home} />
 				</Switch>
 				<Footer />
 			</div>
-			
-			
 		</>
 	);
 }
