@@ -43,11 +43,11 @@ function NavBar(props) {
 											Landing
 										</Link>
 									</li> */}
-									<li className="nav-item">
+									{/* <li className="nav-item">
 										<Link to="/profile" className="nav-link">
 											Login
 										</Link>
-									</li>
+									</li> */}
 
 								</ul>
 								{/* <!-- /.navbar-nav --> */}

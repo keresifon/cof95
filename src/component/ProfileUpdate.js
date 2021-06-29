@@ -5,7 +5,7 @@ import Layout from './Layout';
 import Amplify, { Auth, API } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import {  Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { getAccounts } from '../services/accountService';
 
@@ -13,7 +13,7 @@ Amplify.configure(awsconfig);
 
 function ProfileUpdate(props) {
 	const [user, setUser] = useState('');
-	const [groups, setGroups] = useState('');
+	//const [groups, setGroups] = useState('');
 	const [member, setMember] = useState('');
 	const [fullname, setFullName] = useState('');
 	const [nickname, setNickName] = useState('');
