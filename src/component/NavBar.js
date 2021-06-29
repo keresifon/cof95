@@ -48,11 +48,7 @@ function NavBar(props) {
 											Login
 										</Link>
 									</li>
-									<li className="nav-item">
-										<Link to="/test" className="nav-link">
-											Test
-										</Link>
-									</li>
+
 								</ul>
 								{/* <!-- /.navbar-nav --> */}
 							</div>

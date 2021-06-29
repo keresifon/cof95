@@ -1,32 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+//import { Redirect } from 'react-router-dom';
 import Layout from './Layout';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify, { Auth, API } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 import _ from 'lodash';
-import { saveAccount } from '../services/accountService';
 import { getAccounts } from '../services/accountService';
-
-
 
 Amplify.configure(awsconfig);
 
 function ProfileUpdate(props) {
 	const [user, setUser] = useState('');
 	const [groups, setGroups] = useState('');
-    //const [data, setData] = useState({fullName:'',nickName:'',phone:'',address: '',bio:''})
 	const [member, setMember] = useState('');
-	//const [ lastName, setLastName] = useState('');
 	const [fullname, setFullName] = useState('');
 	const [nickname, setNickName] = useState('');
 	const [phone, setPhone] = useState('');
 	const [address, setAddress] = useState('');
 	const [bio, setBio] = useState('');
-	
-	//const [members, setMembers] = useState({});
-	//const [account, setAccount] = useState();
+	const [email, SetEmail] = useState('');
+	const [id, SetId] = useState('');
 
 	useEffect(() => {
 		async function getUserInfo() {
@@ -36,6 +31,17 @@ function ProfileUpdate(props) {
 		}
 		getUserInfo();
 	}, []);
+	const { register, handleSubmit, reset } = useForm({
+		defaultValues: {
+			id: '',
+			email: '',
+			fullname: '',
+			nickname: '',
+			phone: '',
+			address: '',
+			bio: '',
+		},
+	});
 
 	useEffect(() => {
 		async function gAccount() {
@@ -44,133 +50,93 @@ function ProfileUpdate(props) {
 			const cmember = _.filter(members, function (mem) {
 				return mem.id === user.sub;
 			});
-			const member =  Object.assign({}, ...cmember);
-			setMember(member);
+			const member = Object.assign({}, ...cmember);
+			//setMember(member);
+			reset(member);
 		}
 		gAccount();
-	}, [user.sub]);
+	}, [user.sub, reset]);
 
-	
+	const onSubmit = async (data) => {
+		//e.preventDefault();
 
-	useEffect(() => {
-		async function getUserGroup() {
-			const cuser = await Auth.currentAuthenticatedUser();
-			const groups = cuser.signInUserSession.accessToken.payload['cognito:groups'];
-			setGroups(groups);
-		}
-		getUserGroup();
-	}, []);
+		const myInit = {
+			// OPTIONAL
+			body: {
+				id: user.sub,
+				email: user.email,
+				fullname: data.fullname,
+				nickname: data.nickname,
+				phone: data.phone,
+				address: data.address,
+				bio: data.bio,
+			},
+		};
 
-	if (groups === undefined) {
-		return <Redirect to="/welcome" />;
-	}
+		await API.put('users', '/users', myInit);
 
-	async function putData() {
-
-		return await saveAccount(user, fullname, nickname, phone, address, bio);
-	}
-
-
-
-	const handleSubmit = async(e) => {
-		e.preventDefault();
-
-		await putData();
 		props.history.push('/profile');
 	};
 
-
-	// const member = _.filter(members, function (mem) {
-	// 	return mem.id === user.sub;
-	// });
-	// // => objects for ['fred']
-	
-	
-    
-	// console.log(user)
-	console.log("member", member)
-	console.log(user)
-    
-	
-
-
-
 	return (
 		<Layout>
-			<Container className="py-3">
-				<Row>
-					<Col sm={3}>
-						<Card className="h-100">
-							<Card.Img
-								variant="top"
-								src="https://res.cloudinary.com/kwesiblack/image/upload/v1621029235/cof95/IMG_3846_iyxafe.jpg"
-							/>
-							<Card.Body>
-								<Card.Text>NickName: Etong</Card.Text>
-							</Card.Body>
-						</Card>
-					</Col>
-					<Col>
-						<div>
-							<Form onSubmit={handleSubmit}>
-								<Form.Row>
-									<Col className="p-2">
-										<Form.Control
-											defaultValue={member.fullname}
-											//value={fullName}
-											placeholder=''
-										onChange={(e) => setFullName(e.target.value)}
-										/>
-									</Col>
-
-									<Col className="p-2">
-										<Form.Control
-											defaultValue={member.nickname}
-											placeholder=''
-											onChange={(e) => setNickName(e.target.value)}
-										/>
-									</Col>
-									<Col className="p-2">
-										<Form.Control
-											defaultValue={member.phone}
-											placeholder=''
-											onChange={(e) => setPhone(e.target.value)}
-										/>
-									</Col>
-									<Col className="p-2">
-										<Form.Control
-											as="textarea"
-											defaultValue={member.address}
-											//value={member.address}
-											placeholder=''
-											row={4}
-											onChange={(e) =>setAddress(e.target.value)}
-										/>
-									</Col>
-									<Col className="p-2">
-									<Form.Control
-										as="textarea"
-										defaultValue={member.bio}
-										placeholder=''
-										row={4}
-										onChange={(e) => setBio(e.target.value)}
+			<div className="container py-3">
+				<div className="row">
+					<div className="col-md-6 col-lg-4">
+					<div className="card">
+								<div className="card-body">
+									<img
+										className="rounded-circle w-15 mb-4"
+										src="https://res.cloudinary.com/kwesiblack/image/upload/c_fill,g_face,h_150,r_max,w_150/v1621029235/cof95/IMG_3846_iyxafe.jpg"
+										//srcSet="src/img/avatars/te3@2x.jpg 2x"
+										alt=""
 									/>
-								</Col>
-									<Col className="p-2">
-										<Button variant="outline-secondary" type="submit">
-											Submit
-										</Button>
-									</Col>
-								</Form.Row>
-							</Form>
-						</div>
-					</Col>
-					
-				</Row>
-			</Container>
+							</div></div>
+					</div>
+					<div className="col-md-6 col-lg-4">
+						<form class="contact-form" onSubmit={handleSubmit(onSubmit)}>
+							<div>
+								<div className="col p-2">
+									<input
+										type="text"
+										name="fullname"
+										className="form-control"
+										{...register('fullname')}
+									/>
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<input type="text" className="form-control" {...register('nickname')} />
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<input type="text" className="form-control" {...register('phone')} />
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<textarea type="textarea" className="form-control" {...register('address')} />
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<textarea type="text-area" className="form-control" {...register('bio')} />
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<Button type="submit" variant="outline-secondary">
+										Submit
+									</Button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 		</Layout>
 	);
 }
-//export default Profile;
 export default withAuthenticator(ProfileUpdate);
-

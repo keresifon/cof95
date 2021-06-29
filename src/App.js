@@ -7,7 +7,6 @@ import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import Profile from './component/Profile';
 import ProfileUpdate from './component/ProfileUpdate';
-import UpdateTest from './component/UpdateTest';
 
 function App() {
 	return (
@@ -27,7 +26,6 @@ function App() {
 					<Route path="/uprofile" component={ProfileUpdate} />
 					<Route path="/profile" component={Profile} />
 					<Route path="/welcome" component={Welcome} />
-					<Route path="/test" component={UpdateTest} />
 					<Route path="/" component={Home} />
 				</Switch>
 				<Footer />
