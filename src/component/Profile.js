@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Layout from './Layout';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
 import _ from 'lodash';
 
 import { getAccounts } from '../services/accountService';
@@ -35,7 +34,7 @@ function Profile(props) {
 		}
 		getUserGroup();
 	}, []);
-   
+
 	useEffect(() => {
 		async function gAccount() {
 			const data = await getAccounts();
@@ -45,47 +44,11 @@ function Profile(props) {
 		gAccount();
 	}, []);
 
-	// let iMember = _.includes(groups, 'member');
-
-	// let memb = _.head(groups);
-	// let membn = _.toString(memb);
-	// if (membn === 'member') {
-	// 	console.log("It's equal");
-
-	// } else {
-	// 			return <Redirect to='/reunion' />;
-	// }
-
-
+	if (groups === undefined) {
+		return <Redirect to="/welcome" />;
+	}
 
 	
-	// console.log('State', iMember);
-	// console.log('Extract', memb);
-	// console.log('String', membn);
-	// console.log('Group', groups);
-
-	// useEffect(() => {
-	// 	async function getMember(){
-	// 	const iMember = _.includes(groups, 'member');
-	// 	setIsMember(iMember)
-	// 	console.log("State",isMember)
-	// }
-	// getMember();
-	// }, []);
-
-	// if (groups.includes('member') ){
-	// return console.log ("A member")
-	// }
-	// else {
-	// 	return console.log("Not a Member" )
-	// }
-	//console.log(groups);
-
-	//  if (isMember === false) {
-	// 	return <Redirect to='/reunion' />;
-	// }
-	//console.log(isMember);
-
 	const member = _.filter(members, function (mem) {
 		return mem.id === user;
 	});
@@ -99,52 +62,69 @@ function Profile(props) {
 
 	return (
 		<Layout>
-			<Container className="py-3">
-				<Row>
-					<Col>
-						<div>
-							<Link to="uprofile">[Update Profile]</Link>
+			<div className="container">
+				<section id="team" className="wrapper pt-3 pb-2">
+					<div className="row">
+						<div className="col ml-auto">
+							<h2 className="display-5 mb-7">Your Profile</h2>
 						</div>
-					</Col>
-				</Row>
-				<Row>
-					<Col sm={3}>
-						<Card className="h-100">
-							<Card.Img
-								variant="top"
-								src="https://res.cloudinary.com/kwesiblack/image/upload/v1621029235/cof95/IMG_3846_iyxafe.jpg"
-							/>
-							<Card.Body>
-								<Card.Text>NickName: {nickName}</Card.Text>
-							</Card.Body>
-						</Card>
-					</Col>
-					<Col>
-						<Card className="h-100">
-							<Card.Body>
-								<Card.Subtitle className="mb-2 text-muted">About</Card.Subtitle>
-								<Card.Text>
-									Full Name: {fullName} <br />
-									Email: {email}
-									<br />
-									Phone: {phone}
-									<br />
-									Address: {address}
-								</Card.Text>
-							</Card.Body>
-						</Card>
-					</Col>
-					<Col>
-						<Card className="h-100">
-							<Card.Body>
-								<Card.Subtitle className="mb-2 text-muted">Bio</Card.Subtitle>
-								<Card.Text>{bio} </Card.Text>
-							</Card.Body>
-						</Card>
-					</Col>
-				</Row>
-			</Container>
-		</Layout>
+						<div className="col">
+						<ul className="nav nav-tabs nav-pills">
+									
+									<li className="nav-item"> <Link className="nav-link" data-bs-toggle="tab" to="uprofile"><i className="uil uil-laptop-cloud pe-1"></i><span>Update Profile</span></Link> </li>
+								</ul>
+						</div>
+					</div>
+					<div className="row grid-view gy-6">
+						<div className="col-md-6 col-lg-4">
+							<div className="card">
+								<div className="card-body">
+									<img
+										className="rounded-circle w-15 mb-4"
+										src="https://res.cloudinary.com/kwesiblack/image/upload/c_fill,g_face,h_150,r_max,w_150/v1621029235/cof95/IMG_3846_iyxafe.jpg"
+										//srcSet="src/img/avatars/te3@2x.jpg 2x"
+										alt=""
+									/>
+									<h4 className="mb-1">{fullName}</h4>
+									<div className="meta mb-2">{nickName}</div>
+									<p className="mb-2">
+										{email}
+										<br />
+										{phone}
+										<br />
+										{address}
+									</p>
+									<nav className="nav social mb-0">
+										<Link href="#">
+											<i className="uil uil-twitter"></i>
+										</Link>
+										<Link href="#">
+											<i className="uil uil-facebook-f"></i>
+										</Link>
+										<Link href="#">
+											<i className="uil uil-dribbble"></i>
+										</Link>
+									</nav>
+								</div>
+							</div>
+						</div>
+						<div className="col-md-6 col-lg-4">
+							<div className="card">
+								<div className="card-body">
+									<h4 className="mb-1">Bio</h4>
+
+									<p className="mb-2">
+										{bio}
+										<br />
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+
+					</Layout>
 	);
 }
 //export default Profile;

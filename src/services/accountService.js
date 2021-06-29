@@ -7,20 +7,43 @@ export function getAccounts() {
 
 	
 
-export function saveAccount(user, fullName, nickName, phone, address, bio) {
+export function saveAccount(user, fullname, nickname, phone, address, bio) {
 	const myInit = {
 		// OPTIONAL
 		body: {
 			id: user.sub,
 			email: user.email,
-			fullname: fullName,
-			nickname: nickName,
+			fullname: fullname,
+			nickname: nickname,
 			phone: phone,
 			address: address,
 			bio: bio,
 		
 		},
 	};
+
+	
+
+	//return  API.put('accounts', '/accounts', myInit);
+	return  API.put('users', '/users', myInit);
+}
+
+export function saveData(id, email,fullname, nickname, phone, address, bio) {
+	const myInit = {
+		// OPTIONAL
+		body: {
+			id: id,
+			email: email,
+			fullname: fullname,
+			nickname: nickname,
+			phone: phone,
+			address: address,
+			bio: bio,
+		
+		},
+	};
+
+	
 
 	//return  API.put('accounts', '/accounts', myInit);
 	return  API.put('users', '/users', myInit);
