@@ -48,7 +48,6 @@ function Profile(props) {
 		return <Redirect to="/welcome" />;
 	}
 
-	
 	const member = _.filter(members, function (mem) {
 		return mem.id === user;
 	});
@@ -59,6 +58,11 @@ function Profile(props) {
 	let bio = _.map(member, 'bio');
 	let nickName = _.map(member, 'nickname');
 	let address = _.map(member, 'address');
+	let twitter = _.map(member, 'twitter');
+	let facebook = _.map(member, 'facebook');
+	let image = _.map(member, 'imgURL');
+
+
 
 	return (
 		<Layout>
@@ -69,10 +73,15 @@ function Profile(props) {
 							<h2 className="display-5 mb-7">Your Profile</h2>
 						</div>
 						<div className="col">
-						<ul className="nav nav-tabs nav-pills">
-									
-									<li className="nav-item"> <Link className="nav-link" data-bs-toggle="tab" to="uprofile"><i className="uil uil-laptop-cloud pe-1"></i><span>Update Profile</span></Link> </li>
-								</ul>
+							<ul className="nav nav-tabs nav-pills">
+								<li className="nav-item">
+									{' '}
+									<Link className="nav-link" data-bs-toggle="tab" to="uprofile">
+										<i className="uil uil-laptop-cloud pe-1"></i>
+										<span>Update Profile</span>
+									</Link>{' '}
+								</li>
+							</ul>
 						</div>
 					</div>
 					<div className="row grid-view gy-6">
@@ -80,8 +89,8 @@ function Profile(props) {
 							<div className="card">
 								<div className="card-body">
 									<img
-										className="rounded-circle w-15 mb-4"
-										src="https://res.cloudinary.com/kwesiblack/image/upload/c_fill,g_face,h_150,r_max,w_150/v1621029235/cof95/IMG_3846_iyxafe.jpg"
+										className="rounded-circle  mb-4"
+										src={image}
 										//srcSet="src/img/avatars/te3@2x.jpg 2x"
 										alt=""
 									/>
@@ -91,24 +100,20 @@ function Profile(props) {
 										{email}
 										<br />
 										{phone}
-										<br />
-										{address}
 									</p>
 									<nav className="nav social mb-0">
-										<Link href="#">
+										<a href={twitter} target="_blank" rel="noopener noreferrer">
 											<i className="uil uil-twitter"></i>
-										</Link>
-										<Link href="#">
+										</a>
+										<a href={facebook} target="_blank" rel="noopener noreferrer">
 											<i className="uil uil-facebook-f"></i>
-										</Link>
-										<Link href="#">
-											<i className="uil uil-dribbble"></i>
-										</Link>
+										</a>
+										
 									</nav>
 								</div>
 							</div>
 						</div>
-						<div className="col-md-6 col-lg-4">
+						<div className="col-md-6 col-lg-4 ">
 							<div className="card">
 								<div className="card-body">
 									<h4 className="mb-1">Bio</h4>
@@ -119,12 +124,22 @@ function Profile(props) {
 									</p>
 								</div>
 							</div>
+							<div className="p-2"></div>
+							<div className="card ">
+								<div className="card-body">
+									<h4 className="mb-1">Address</h4>
+
+									<p className="mb-2">
+										{address}
+										<br />
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
 			</div>
-
-					</Layout>
+		</Layout>
 	);
 }
 //export default Profile;

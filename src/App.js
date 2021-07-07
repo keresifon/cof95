@@ -1,4 +1,5 @@
 //import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.scss';
 import { Switch, Route } from 'react-router-dom';
 import Home from './component/Home';
@@ -7,11 +8,16 @@ import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import Profile from './component/Profile';
 import ProfileUpdate from './component/ProfileUpdate';
+import { ImgUpProvider  } from './context/Context';
+
 
 function App() {
+	const [imageUrl, setImageUrl] = useState('')
+
 	return (
 		<>
 			<div className="vh-100">
+			<ImgUpProvider value = { [imageUrl, setImageUrl]}>
 				<NavBar />
 				<Switch>
 					{/*	<Route path="/products/:id" component={ProductDetails} />
@@ -29,6 +35,7 @@ function App() {
 					<Route path="/" component={Home} />
 				</Switch>
 				<Footer />
+				</ImgUpProvider>
 			</div>
 		</>
 	);

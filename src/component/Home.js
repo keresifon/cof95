@@ -16,11 +16,8 @@ function Home(props) {
 							<span><Link to="/" className="btn btn-lg btn-outline-primary rounded-pill">Contact Us</Link></span>
 						</div>
 					</div>
-					{/* <!--/column --> */}
 				</div>
-				{/* <!-- /.row --> */}
 			</div>
-			{/* <!-- /.container --> */}
 			<figure className="position-absoute"  style={{bottom:0, left: 0, zIndex:4}}><img src={bgimage} alt="" /></figure> 
 		</section>
 		<section className="wrapper bg-gray">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 //import { Redirect } from 'react-router-dom';
 import Layout from './Layout';
@@ -8,20 +8,26 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import {  Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { getAccounts } from '../services/accountService';
+import CloudinaryUpload from './CloudinaryUpload';
+import { ImgUpContext } from '../context/Context';
+
+
 
 Amplify.configure(awsconfig);
 
 function ProfileUpdate(props) {
 	const [user, setUser] = useState('');
+	const [imageUrl] = useContext(ImgUpContext);
+
 	//const [groups, setGroups] = useState('');
-	const [member, setMember] = useState('');
-	const [fullname, setFullName] = useState('');
-	const [nickname, setNickName] = useState('');
-	const [phone, setPhone] = useState('');
-	const [address, setAddress] = useState('');
-	const [bio, setBio] = useState('');
-	const [email, SetEmail] = useState('');
-	const [id, SetId] = useState('');
+	//const [member, setMember] = useState('');
+	//const [fullname, setFullName] = useState('');
+	//const [nickname, setNickName] = useState('');
+	//const [phone, setPhone] = useState('');
+	//const [address, setAddress] = useState('');
+	//const [bio, setBio] = useState('');
+	//const [email, SetEmail] = useState('');
+	//const [id, SetId] = useState('');
 
 	useEffect(() => {
 		async function getUserInfo() {
@@ -40,6 +46,9 @@ function ProfileUpdate(props) {
 			phone: '',
 			address: '',
 			bio: '',
+			twitter:"",
+			facebook:"",
+			imgURL:""
 		},
 	});
 
@@ -56,6 +65,7 @@ function ProfileUpdate(props) {
 		}
 		gAccount();
 	}, [user.sub, reset]);
+	console.log("image:", imageUrl)
 
 	const onSubmit = async (data) => {
 		//e.preventDefault();
@@ -70,6 +80,9 @@ function ProfileUpdate(props) {
 				phone: data.phone,
 				address: data.address,
 				bio: data.bio,
+				twitter:data.twitter,
+				facebook:data.facebook,
+				imgURL:imageUrl
 			},
 		};
 
@@ -77,7 +90,6 @@ function ProfileUpdate(props) {
 
 		props.history.push('/profile');
 	};
-
 	return (
 		<Layout>
 			<div className="container py-3">
@@ -85,21 +97,17 @@ function ProfileUpdate(props) {
 					<div className="col-md-6 col-lg-4">
 					<div className="card">
 								<div className="card-body">
-									<img
-										className="rounded-circle w-15 mb-4"
-										src="https://res.cloudinary.com/kwesiblack/image/upload/c_fill,g_face,h_150,r_max,w_150/v1621029235/cof95/IMG_3846_iyxafe.jpg"
-										//srcSet="src/img/avatars/te3@2x.jpg 2x"
-										alt=""
-									/>
+									<CloudinaryUpload />
+ 									
 							</div></div>
 					</div>
 					<div className="col-md-6 col-lg-4">
-						<form class="contact-form" onSubmit={handleSubmit(onSubmit)}>
+						<form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
 							<div>
 								<div className="col p-2">
 									<input
 										type="text"
-										name="fullname"
+										placeholder="Fullname"
 										className="form-control"
 										{...register('fullname')}
 									/>
@@ -107,22 +115,41 @@ function ProfileUpdate(props) {
 							</div>
 							<div>
 								<div className="col p-2">
-									<input type="text" className="form-control" {...register('nickname')} />
+									<input type="text" className="form-control" placeholder="Nickname" {...register('nickname')} />
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<input type="text" className="form-control" {...register('phone')} />
+									<input id="phone" type="text" placeholder="Phone" className="form-control" {...register('phone')} />
+
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<textarea type="textarea" className="form-control" {...register('address')} />
+									<textarea type="textarea" placeholder="Addres" className="form-control" {...register('address')} />
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<textarea type="text-area" className="form-control" {...register('bio')} />
+									<textarea type="text-area" placeholder="Bio" className="form-control" {...register('bio')} />
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<input  type="text" placeholder="@twitter" className="form-control" {...register('twitter')} />
+
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<input  type="text" placeholder="@facebook" className="form-control" {...register('facebook')} />
+
+								</div>
+							</div>
+							<div>
+								<div className="col p-2">
+									<input  type="text" placeholder="image" className="form-control" {...register('imgURL')} readOnly />
+
 								</div>
 							</div>
 							<div>

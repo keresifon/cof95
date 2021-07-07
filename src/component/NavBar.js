@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import logodark from '../component/img/logo-dark.png';
 import logolight from '../component/img/logo-light.png';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
+import '../../src/component/css/theme/navy.css';
+
+
+
 
 function NavBar(props) {
 	return (
@@ -13,19 +17,15 @@ function NavBar(props) {
 					<div className="container">
 						<div className="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
 							<div className="navbar-brand w-100">
-								<a href="index.html">
+								<Link to="/">
 									<img src={logodark} srcSet="src/img/logo-dark@2x.png 2x" alt="" />
-								</a>
+								</Link>
 							</div>
-							<div className="navbar-collapse offcanvas-nav d-lg-flex mx-lg-auto">
+							<div className=" offcanvas-nav d-lg-flex mx-lg-auto">
 								<div className="offcanvas-header d-lg-none d-xl-none">
-									<a href="index.html">
-										<img
-											src={logolight}
-											srcSet="src/img/logo-light@2x.png 2x"
-											alt=""
-										/>
-									</a>
+									<Link to="/">
+										<img src={logolight} srcSet="src/img/logo-light@2x.png 2x" alt="" />
+									</Link>
 									<button
 										type="button"
 										className="btn-close btn-close-white offcanvas-close offcanvas-nav-close"
@@ -48,11 +48,8 @@ function NavBar(props) {
 											Login
 										</Link>
 									</li> */}
-
 								</ul>
-								{/* <!-- /.navbar-nav --> */}
 							</div>
-							{/* <!-- /.navbar-collapse --> */}
 							<div className="navbar-other w-100 d-flex ms-auto">
 								<ul className="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
 									<li className="nav-item">
@@ -66,15 +63,10 @@ function NavBar(props) {
 										</div>
 									</li>
 								</ul>
-								{/* <!-- /.navbar-nav --> */}
 							</div>
-							{/* <!-- /.navbar-other --> */}
 						</div>
-						{/* <!-- /.navbar-collapse-wrapper --> */}
 					</div>
-					{/* <!-- /.container --> */}
 				</nav>
-				{/* <!-- /.navbar --> */}
 			</header>
 		</div>
 	);
