@@ -8,16 +8,18 @@ import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import Profile from './component/Profile';
 import ProfileUpdate from './component/ProfileUpdate';
-import { ImgUpProvider  } from './context/Context';
+import { ImgUpProvider , UserProvider } from './context/Context';
 
 
 function App() {
 	const [imageUrl, setImageUrl] = useState('')
+	const [user, setUser] = useState('');
 
 	return (
 		<>
 			<div className="vh-100">
 			<ImgUpProvider value = { [imageUrl, setImageUrl]}>
+			<UserProvider value={[user, setUser]}>
 				<NavBar />
 				<Switch>
 					{/*	<Route path="/products/:id" component={ProductDetails} />
@@ -35,6 +37,7 @@ function App() {
 					<Route path="/" component={Home} />
 				</Switch>
 				<Footer />
+				</UserProvider>
 				</ImgUpProvider>
 			</div>
 		</>

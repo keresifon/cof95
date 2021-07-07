@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Layout from './Layout';
 import Amplify, { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import _ from 'lodash';
-
+import { UserContext } from '../context/Context';
 import { getAccounts } from '../services/accountService';
 Amplify.configure(awsconfig);
 
 function Profile(props) {
-	const [user, setUser] = useState('');
+	const [user, setUser] = useContext(UserContext);
 	//const [member, setMember] = useState('');
 	//const [ lastName, setLastName] = useState('');
 	const [groups, setGroups] = useState('');
@@ -24,7 +24,7 @@ function Profile(props) {
 			setUser(user);
 		}
 		getUserInfo();
-	}, []);
+	}, [setUser]);
 
 	useEffect(() => {
 		async function getUserGroup() {

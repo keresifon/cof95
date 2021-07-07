@@ -9,14 +9,14 @@ import {  Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { getAccounts } from '../services/accountService';
 import CloudinaryUpload from './CloudinaryUpload';
-import { ImgUpContext } from '../context/Context';
+import { ImgUpContext , UserContext} from '../context/Context';
 
 
 
 Amplify.configure(awsconfig);
 
 function ProfileUpdate(props) {
-	const [user, setUser] = useState('');
+	const [user] = useContext(UserContext);
 	const [imageUrl] = useContext(ImgUpContext);
 
 	//const [groups, setGroups] = useState('');
@@ -29,14 +29,16 @@ function ProfileUpdate(props) {
 	//const [email, SetEmail] = useState('');
 	//const [id, SetId] = useState('');
 
-	useEffect(() => {
-		async function getUserInfo() {
-			const cuser = await Auth.currentAuthenticatedUser();
-			const user = cuser.attributes;
-			setUser(user);
-		}
-		getUserInfo();
-	}, []);
+	// useEffect(() => {
+	// 	async function getUserInfo() {
+	// 		const cuser = await Auth.currentAuthenticatedUser();
+	// 		const user = cuser.attributes;
+	// 		setUser(user);
+	// 	}
+	// 	getUserInfo();
+	// }, []);
+
+	console.log("userid",user)
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			id: '',
@@ -57,14 +59,14 @@ function ProfileUpdate(props) {
 			const data = await getAccounts();
 			const members = [...data];
 			const cmember = _.filter(members, function (mem) {
-				return mem.id === user.sub;
+				return mem.id === user;
 			});
 			const member = Object.assign({}, ...cmember);
 			//setMember(member);
 			reset(member);
 		}
 		gAccount();
-	}, [user.sub, reset]);
+	}, [user, reset]);
 	console.log("image:", imageUrl)
 
 	const onSubmit = async (data) => {
@@ -73,8 +75,8 @@ function ProfileUpdate(props) {
 		const myInit = {
 			// OPTIONAL
 			body: {
-				id: user.sub,
-				email: user.email,
+				id: user,
+				email: data.email,
 				fullname: data.fullname,
 				nickname: data.nickname,
 				phone: data.phone,
