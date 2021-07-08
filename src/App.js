@@ -9,6 +9,7 @@ import Footer from './component/Footer';
 import Profile from './component/Profile';
 import ProfileUpdate from './component/ProfileUpdate';
 import { ImgUpProvider , UserProvider } from './context/Context';
+import Members from './component/Members'
 
 
 function App() {
@@ -28,8 +29,8 @@ function App() {
 								<Route path="/login" component={LoginForm} />
 								<Route path="/logout" component={Logout} />
 								<Route path="/register" component={Register} />
-								<Route path="/checkout" component={Checkout} />
-								<Route path="/addproduct" component={AddProduct} />*/}
+								<Route path="/checkout" component={Checkout} />*/}
+								<Route path="/members" component={Members} />
 					<Route path="/uprofile" component={ProfileUpdate} />
 					<Route path="/profile" component={Profile} />
 					<Route path="/welcome" component={Welcome} />

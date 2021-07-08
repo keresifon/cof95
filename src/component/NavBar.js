@@ -53,7 +53,14 @@ function NavBar(props) {
 											Your Profile
 										</Link>
 									</li> 
-								 )}
+									)}
+									{user && (
+									<li className="nav-item">
+										<Link to="/members" className="nav-link">
+											Members
+										</Link>
+									</li> 
+									)}
 								</ul>
 							</div>
 							<div className="navbar-other w-100 d-flex ms-auto">
