@@ -1,14 +1,18 @@
-import React from 'react';
+import React , {useContext}from 'react';
 import { Link } from 'react-router-dom';
 import logodark from '../component/img/logo-dark.png';
 import logolight from '../component/img/logo-light.png';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
 import '../../src/component/css/theme/navy.css';
+import { UserContext } from '../context/Context';
+
 
 
 
 
 function NavBar(props) {
+	const [user] = useContext(UserContext);
+ console.log("The userid", user)
 	return (
 		<div>
 			{' '}
@@ -43,18 +47,22 @@ function NavBar(props) {
 											Landing
 										</Link>
 									</li> */}
-									{/* <li className="nav-item">
+								 {user && (
+								 <li className="nav-item">
 										<Link to="/profile" className="nav-link">
-											Login
+											Your Profile
 										</Link>
-									</li> */}
+									</li> 
+								 )}
 								</ul>
 							</div>
 							<div className="navbar-other w-100 d-flex ms-auto">
 								<ul className="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
+								{user && (
 									<li className="nav-item">
 										<AmplifySignOut />
 									</li>
+								)}
 									<li className="nav-item d-lg-none">
 										<div className="navbar-hamburger">
 											<button className="hamburger animate plain" data-toggle="offcanvas-nav">

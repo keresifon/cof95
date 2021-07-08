@@ -1,42 +1,33 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 //import { Redirect } from 'react-router-dom';
 import Layout from './Layout';
-import Amplify, { Auth, API } from 'aws-amplify';
+import Amplify, { API } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
 import {  Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { getAccounts } from '../services/accountService';
 import CloudinaryUpload from './CloudinaryUpload';
-import { ImgUpContext } from '../context/Context';
+import { ImgUpContext , UserContext } from '../context/Context';
 
 
 
 Amplify.configure(awsconfig);
 
 function ProfileUpdate(props) {
-	const [user, setUser] = useState('');
+	const [user] = useContext(UserContext);
 	const [imageUrl] = useContext(ImgUpContext);
+ console.log("The userid in update", user)
 
-	//const [groups, setGroups] = useState('');
-	//const [member, setMember] = useState('');
-	//const [fullname, setFullName] = useState('');
-	//const [nickname, setNickName] = useState('');
-	//const [phone, setPhone] = useState('');
-	//const [address, setAddress] = useState('');
-	//const [bio, setBio] = useState('');
-	//const [email, SetEmail] = useState('');
-	//const [id, SetId] = useState('');
-
-	useEffect(() => {
-		async function getUserInfo() {
-			const cuser = await Auth.currentAuthenticatedUser();
-			const user = cuser.attributes;
-			setUser(user);
-		}
-		getUserInfo();
-	}, []);
+		// useEffect(() => {
+	// 	async function getUserInfo() {
+	// 		const cuser = await Auth.currentAuthenticatedUser();
+	// 		const user = cuser.attributes;
+	// 		setUser(user);
+	// 	}
+	// 	getUserInfo();
+	// }, []);
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			id: '',
@@ -57,15 +48,14 @@ function ProfileUpdate(props) {
 			const data = await getAccounts();
 			const members = [...data];
 			const cmember = _.filter(members, function (mem) {
-				return mem.id === user.sub;
+				return mem.id === user;
 			});
 			const member = Object.assign({}, ...cmember);
 			//setMember(member);
 			reset(member);
 		}
 		gAccount();
-	}, [user.sub, reset]);
-	console.log("image:", imageUrl)
+	}, [user, reset]);
 
 	const onSubmit = async (data) => {
 		//e.preventDefault();
@@ -73,8 +63,8 @@ function ProfileUpdate(props) {
 		const myInit = {
 			// OPTIONAL
 			body: {
-				id: user.sub,
-				email: user.email,
+				id: user,
+				email: data.email,
 				fullname: data.fullname,
 				nickname: data.nickname,
 				phone: data.phone,
