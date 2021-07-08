@@ -1,10 +1,10 @@
 import React, { useState, useEffect , useContext } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Layout from './Layout';
-import Amplify, { Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import _ from 'lodash';
+//import _ from 'lodash';
 import { UserContext } from '../context/Context';
 
 import { getAccounts } from '../services/accountService';
@@ -23,7 +23,7 @@ function Members(props) {
 		}
 		gAccount();
 	}, []);
-console.log(members)
+console.log(user)
 
 
     return (
@@ -35,8 +35,8 @@ console.log(members)
 								<div class="card">
 									<div class="card-body">
 										<img src={member.imgURL} className="w-15" alt="" />
-										<h4 className="mb-1">{member.fullName}</h4>
-									<div className="meta mb-2">{member.nickName}</div>
+										<h4 className="mb-1">{member.fullname}</h4>
+									<div className="meta mb-2">{member.nickname}</div>
 									<p className="mb-2">
 										{member.email}
 										<br />
