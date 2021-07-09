@@ -1,7 +1,7 @@
 import React , {useContext}from 'react';
 import { Link } from 'react-router-dom';
-import logodark from '../component/img/logo-dark.png';
-import logolight from '../component/img/logo-light.png';
+//import logodark from '../component/img/logo-dark.png';
+//import logolight from '../component/img/logo-light.png';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
 import '../../src/component/css/theme/navy.css';
 import { UserContext } from '../context/Context';
@@ -21,13 +21,13 @@ function NavBar(props) {
 						<div className="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
 							<div className="navbar-brand w-100">
 								<Link to="/">
-									<img src={logodark} srcSet="src/img/logo-dark@2x.png 2x" alt="" />
+									<img src="https://res.cloudinary.com/kwesiblack/image/upload/c_scale,w_75/v1625871791/cof95/logo_j0josc.png" srcSet="src/img/logo-dark@2x.png 2x" alt="" />
 								</Link>
 							</div>
 							<div className=" offcanvas-nav d-lg-flex mx-lg-auto">
 								<div className="offcanvas-header d-lg-none d-xl-none">
 									<Link to="/">
-										<img src={logolight} srcSet="src/img/logo-light@2x.png 2x" alt="" />
+										<img src="https://res.cloudinary.com/kwesiblack/image/upload/c_scale,w_75/v1625871791/cof95/logo_j0josc.png" srcSet="src/img/logo-light@2x.png 2x" alt="" />
 									</Link>
 									<button
 										type="button"
