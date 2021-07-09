@@ -29,6 +29,10 @@ console.log(user)
     return (
         <Layout>
         <div className ="container">
+		<div className="col ml-auto">
+							<h2 className="display-5 mb-7">Directory</h2>
+						</div>
+						
 					<div class="row text-center gy-6 mt-6">
                                     {members.map(member => (
 							<div class="col-md-6 col-lg-4">

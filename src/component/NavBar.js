@@ -42,19 +42,21 @@ function NavBar(props) {
 											Home
 										</Link>
 									</li>
-									{/* <li className="nav-item">
-										<Link to="/welcome" className="nav-link">
-											Landing
-										</Link>
-									</li> */}
-								 {user && (
+									{user && (
 								 <li className="nav-item">
 										<Link to="/profile" className="nav-link">
-											Your Profile
+											Profile
 										</Link>
 									</li> 
 									)}
-									{user && (
+								
+
+								   <li className="nav-item">
+										<Link to="/finstatement" className="nav-link">
+											Accounts
+										</Link>
+									</li> 
+								 	{user && (
 									<li className="nav-item">
 										<Link to="/members" className="nav-link">
 											Members

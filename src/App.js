@@ -10,6 +10,7 @@ import Profile from './component/Profile';
 import ProfileUpdate from './component/ProfileUpdate';
 import { ImgUpProvider , UserProvider } from './context/Context';
 import Members from './component/Members'
+import AccSatement from './component/content/AccSatement'
 
 
 function App() {
@@ -28,8 +29,8 @@ function App() {
 								<Route path="/cart/:id?" component={Cart} />
 								<Route path="/login" component={LoginForm} />
 								<Route path="/logout" component={Logout} />
-								<Route path="/register" component={Register} />
-								<Route path="/checkout" component={Checkout} />*/}
+								<Route path="/register" component={Register} />*/}
+								<Route path="/finstatement" component={AccSatement} />
 								<Route path="/members" component={Members} />
 					<Route path="/uprofile" component={ProfileUpdate} />
 					<Route path="/profile" component={Profile} />
