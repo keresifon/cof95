@@ -1,5 +1,10 @@
 import React , { useState, useEffect } from 'react';
 import Layout from '../Layout';
+import Amplify from 'aws-amplify';
+import awsconfig from '../../aws-exports';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+
+Amplify.configure(awsconfig);
 
 
 const query = `
@@ -70,4 +75,4 @@ function AccSatement(props) {
     );
 }
 
-export default AccSatement;
+export default withAuthenticator(AccSatement);

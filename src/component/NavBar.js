@@ -49,12 +49,13 @@ function NavBar(props) {
 									</li> 
 									)}
 								
-
+								{user && (
 								   <li className="nav-item">
 										<Link to="/finstatement" className="nav-link">
 											Accounts
 										</Link>
 									</li> 
+								)}
 								 	{user && (
 									<li className="nav-item">
 										<Link to="/members" className="nav-link">

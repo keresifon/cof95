@@ -56,31 +56,10 @@ console.log(user)
 										
 									</nav><Link to="#" class="more hover link-violet">Learn More</Link>
 									</div>
-									{/* <!--/.card-body --> */}
 								</div>
-								{/* <!--/.card --> */}
 							</div>
                             ))}
-							{/* <div class="col-md-6 col-lg-4">
-								<div class="card bg-pale-aqua">
-									<div class="card-body">
-										<img src="src/img/icons/shield.svg" class="svg-inject icon-svg icon-svg-md text-aqua mb-4" alt="" />
-										<h4>Secure Payments</h4>
-										<p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.</p>
-										<a href="#" class="more hover link-aqua">Learn More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6 col-lg-4">
-								<div class="card bg-pale-red">
-									<div class="card-body">
-										<img src="src/img/icons/cloud-computing-3.svg" class="svg-inject icon-svg icon-svg-md text-red mb-4" alt="" />
-										<h4>Daily Updates</h4>
-										<p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus cras justo.</p>
-										<a href="#" class="more hover link-red">Learn More</a>
-									</div>
-								</div>
-							</div> */}
+							
 						</div>
 
         </div>
