@@ -5,29 +5,18 @@ import Layout from './Layout';
 import Amplify, { API } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-import {  Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { getAccounts } from '../services/accountService';
 import CloudinaryUpload from './CloudinaryUpload';
-import { ImgUpContext , UserContext } from '../context/Context';
-
-
+import { ImgUpContext, UserContext } from '../context/Context';
 
 Amplify.configure(awsconfig);
 
 function ProfileUpdate(props) {
 	const [user] = useContext(UserContext);
 	const [imageUrl] = useContext(ImgUpContext);
- console.log("The userid in update", user)
 
-		// useEffect(() => {
-	// 	async function getUserInfo() {
-	// 		const cuser = await Auth.currentAuthenticatedUser();
-	// 		const user = cuser.attributes;
-	// 		setUser(user);
-	// 	}
-	// 	getUserInfo();
-	// }, []);
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			id: '',
@@ -37,9 +26,9 @@ function ProfileUpdate(props) {
 			phone: '',
 			address: '',
 			bio: '',
-			twitter:"",
-			facebook:"",
-			imgURL:""
+			twitter: '',
+			facebook: '',
+			imgURL: '',
 		},
 	});
 
@@ -70,9 +59,9 @@ function ProfileUpdate(props) {
 				phone: data.phone,
 				address: data.address,
 				bio: data.bio,
-				twitter:data.twitter,
-				facebook:data.facebook,
-				imgURL:imageUrl
+				twitter: data.twitter,
+				facebook: data.facebook,
+				imgURL: imageUrl,
 			},
 		};
 
@@ -85,11 +74,11 @@ function ProfileUpdate(props) {
 			<div className="container py-3">
 				<div className="row">
 					<div className="col-md-6 col-lg-4">
-					<div className="card">
-								<div className="card-body">
-									<CloudinaryUpload />
- 									
-							</div></div>
+						<div className="card">
+							<div className="card-body">
+								<CloudinaryUpload />
+							</div>
+						</div>
 					</div>
 					<div className="col-md-6 col-lg-4">
 						<form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
@@ -105,41 +94,74 @@ function ProfileUpdate(props) {
 							</div>
 							<div>
 								<div className="col p-2">
-									<input type="text" className="form-control" placeholder="Nickname" {...register('nickname')} />
+									<input
+										type="text"
+										className="form-control"
+										placeholder="Nickname"
+										{...register('nickname')}
+									/>
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<input id="phone" type="text" placeholder="Phone" className="form-control" {...register('phone')} />
-
+									<input
+										id="phone"
+										type="text"
+										placeholder="Phone"
+										className="form-control"
+										{...register('phone')}
+									/>
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<textarea type="textarea" placeholder="Addres" className="form-control" {...register('address')} />
+									<textarea
+										type="textarea"
+										placeholder="Addres"
+										className="form-control"
+										{...register('address')}
+									/>
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<textarea type="text-area" placeholder="Bio" className="form-control" {...register('bio')} />
+									<textarea
+										type="text-area"
+										placeholder="Bio"
+										className="form-control"
+										{...register('bio')}
+									/>
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<input  type="text" placeholder="@twitter" className="form-control" {...register('twitter')} />
-
+									<input
+										type="text"
+										placeholder="@twitter"
+										className="form-control"
+										{...register('twitter')}
+									/>
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<input  type="text" placeholder="@facebook" className="form-control" {...register('facebook')} />
-
+									<input
+										type="text"
+										placeholder="@facebook"
+										className="form-control"
+										{...register('facebook')}
+									/>
 								</div>
 							</div>
 							<div>
 								<div className="col p-2">
-									<input  type="text" placeholder="image" className="form-control" {...register('imgURL')} readOnly />
-
+									<input
+										type="text"
+										placeholder="image"
+										className="form-control"
+										{...register('imgURL')}
+										readOnly
+									/>
 								</div>
 							</div>
 							<div>

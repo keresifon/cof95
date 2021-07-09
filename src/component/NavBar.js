@@ -12,7 +12,6 @@ import { UserContext } from '../context/Context';
 
 function NavBar(props) {
 	const [user] = useContext(UserContext);
- console.log("The userid", user)
 	return (
 		<div>
 			{' '}
