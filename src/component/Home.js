@@ -14,7 +14,7 @@ function Home(props) {
                   class="img-fluid ms-auto mx-auto me-lg-8"
                   //src={bgimage0}
 				  src="https://res.cloudinary.com/kwesiblack/image/upload/v1625933534/cof95/friendship-5616035_1920-removebg-preview_gt8bs5.png"
-                  srcset="src/img/photos/co3@2x.png 2x"
+                  srcset="https://res.cloudinary.com/kwesiblack/image/upload/v1625933534/cof95/friendship-5616035_1920-removebg-preview_gt8bs5.png"
                   alt=""
                   data-cue="fadeIn"
                 />
