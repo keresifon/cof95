@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 //import logodark from '../component/img/logo-dark.png';
 //import logolight from '../component/img/logo-light.png';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
-import '../../src/component/css/theme/aqua.css';
+//import '../../src/component/css/theme/aqua.css';
 import { UserContext } from '../context/Context';
 import { Navbar, Nav, NavDropdown,  } from 'react-bootstrap';
 
@@ -15,7 +15,7 @@ function NavBar(props) {
 	const [user] = useContext(UserContext);
 	return (
 		
-		< div className="container pt-2 pb-5">
+		< div className="container pt-5 pb-5">
 			<Navbar bg="light" expand="lg">
   <Navbar.Brand as={Link} to="/"><img
         src="https://res.cloudinary.com/kwesiblack/image/upload/c_scale,w_75/v1625871791/cof95/logo_j0josc.png"
@@ -31,6 +31,7 @@ function NavBar(props) {
 	  {user && ( <Nav.Link as={Link} to="/profile">Profile</Nav.Link> )}
 	  {user && (<Nav.Link as={Link} to="/finstatement">Accounts</Nav.Link> )}
 	  {user && (<Nav.Link as={Link} to="/members">Members</Nav.Link>)}
+    {/* <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link> */}
       <NavDropdown title="Dropdown" id="basic-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

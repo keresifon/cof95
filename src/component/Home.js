@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../src/component/css/theme/aqua.css";
-import bgimage0 from "../component/img/photos/co3.png";
+//import "../../src/component/css/theme/aqua.css";
+
+
+
 function Home(props) {
   return (
     <div>

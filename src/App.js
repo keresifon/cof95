@@ -11,6 +11,7 @@ import ProfileUpdate from './component/ProfileUpdate';
 import { ImgUpProvider , UserProvider } from './context/Context';
 import Members from './component/Members'
 import AccSatement from './component/content/AccSatement'
+import Gallery from './component/content/Gallery';
 
 
 function App() {
@@ -28,8 +29,8 @@ function App() {
 								<Route path="/products" component={Products} />
 								<Route path="/cart/:id?" component={Cart} />
 								<Route path="/login" component={LoginForm} />
-								<Route path="/logout" component={Logout} />
-								<Route path="/register" component={Register} />*/}
+								<Route path="/logout" component={Logout} />*/}
+								<Route path="/gallery" component={Gallery} />
 								<Route path="/finstatement" component={AccSatement} />
 								<Route path="/members" component={Members} />
 					<Route path="/uprofile" component={ProfileUpdate} />
