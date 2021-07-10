@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 //import logodark from '../component/img/logo-dark.png';
 //import logolight from '../component/img/logo-light.png';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
-import '../../src/component/css/theme/navy.css';
+import '../../src/component/css/theme/aqua.css';
 import { UserContext } from '../context/Context';
+import { Navbar, Nav, NavDropdown,  } from 'react-bootstrap';
 
 
 
@@ -13,79 +14,40 @@ import { UserContext } from '../context/Context';
 function NavBar(props) {
 	const [user] = useContext(UserContext);
 	return (
-		<div>
-			{' '}
-			<header className="wrapper bg-gray">
-				<nav className="navbar fancy navbar-expand-lg navbar-light caret-none navbar-bg-light">
-					<div className="container">
-						<div className="navbar-collapse-wrapper bg-white d-flex flex-row flex-nowrap w-100 justify-content-between align-items-center">
-							<div className="navbar-brand w-100">
-								<Link to="/">
-									<img src="https://res.cloudinary.com/kwesiblack/image/upload/c_scale,w_75/v1625871791/cof95/logo_j0josc.png" srcSet="src/img/logo-dark@2x.png 2x" alt="" />
-								</Link>
-							</div>
-							<div className=" offcanvas-nav d-lg-flex mx-lg-auto">
-								<div className="offcanvas-header d-lg-none d-xl-none">
-									<Link to="/">
-										<img src="https://res.cloudinary.com/kwesiblack/image/upload/c_scale,w_75/v1625871791/cof95/logo_j0josc.png" srcSet="src/img/logo-light@2x.png 2x" alt="" />
-									</Link>
-									<button
-										type="button"
-										className="btn-close btn-close-white offcanvas-close offcanvas-nav-close"
-										aria-label="Close"
-									></button>
-								</div>
-								<ul className="navbar-nav">
-									<li className="nav-item">
-										<Link to="/" className="nav-link">
-											Home
-										</Link>
-									</li>
-									{user && (
-								 <li className="nav-item">
-										<Link to="/profile" className="nav-link">
-											Profile
-										</Link>
-									</li> 
-									)}
-								
-								{user && (
-								   <li className="nav-item">
-										<Link to="/finstatement" className="nav-link">
-											Accounts
-										</Link>
-									</li> 
-								)}
-								 	{user && (
-									<li className="nav-item">
-										<Link to="/members" className="nav-link">
-											Members
-										</Link>
-									</li> 
-									)}
-								</ul>
-							</div>
-							<div className="navbar-other w-100 d-flex ms-auto">
-								<ul className="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
-								{user && (
-									<li className="nav-item">
-										<AmplifySignOut />
-									</li>
-								)}
-									<li className="nav-item d-lg-none">
-										<div className="navbar-hamburger">
-											<button className="hamburger animate plain" data-toggle="offcanvas-nav">
-												<span></span>
-											</button>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</nav>
-			</header>
+		
+		< div className="container pt-2 pb-5">
+			<Navbar bg="light" expand="lg">
+  <Navbar.Brand as={Link} to="/"><img
+        src="https://res.cloudinary.com/kwesiblack/image/upload/c_scale,w_75/v1625871791/cof95/logo_j0josc.png"
+       // width="30"
+        //height="30"
+        className="d-inline-block align-top"
+        alt="React Bootstrap logo"
+      /></Navbar.Brand>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto">
+      <Nav.Link as={Link} to="/">Home</Nav.Link>
+	  {user && ( <Nav.Link as={Link} to="/profile">Profile</Nav.Link> )}
+	  {user && (<Nav.Link as={Link} to="/finstatement">Accounts</Nav.Link> )}
+	  {user && (<Nav.Link as={Link} to="/members">Members</Nav.Link>)}
+      <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+      </NavDropdown>
+    </Nav>
+	<Nav className="ml-auto">
+	{user && (<AmplifySignOut /> )}
+</Nav>
+    
+  </Navbar.Collapse>
+</Navbar>
 		</div>
+
+		
 	);
 }
 
