@@ -23,7 +23,7 @@ function Members(props) {
 		}
 		gAccount();
 	}, []);
-console.log(user)
+
 
 
     return (
