@@ -4,7 +4,7 @@ import Layout from './Layout';
 import Amplify from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { withAuthenticator } from '@aws-amplify/ui-react';
-//import _ from 'lodash';
+import _ from 'lodash';
 import { UserContext } from '../context/Context';
 
 import { getAccounts } from '../services/accountService';
@@ -24,8 +24,9 @@ function Members(props) {
 		gAccount();
 	}, []);
 
-
-
+	const count = _.size(members)
+console.log(user)
+console.log(count)
     return (
         <Layout>
         <div className ="container">

@@ -1,11 +1,15 @@
-import React from "react";
+
+import React from 'react';
 import { Link } from "react-router-dom";
-//import "../../src/component/css/theme/aqua.css";
+import Layout from './Layout';
 
 
 
 function Home(props) {
+ 
+
   return (
+    <Layout>
     <div>
       <div class="container ">
         <div class="card bg-soft-primary rounded-4 mt-2 mb-5 mb-md-17">
@@ -15,7 +19,7 @@ function Home(props) {
                 <img
                   class="img-fluid ms-auto mx-auto me-lg-8"
                   //src={bgimage0}
-				  src="https://res.cloudinary.com/kwesiblack/image/upload/v1625933534/cof95/friendship-5616035_1920-removebg-preview_gt8bs5.png"
+                  src="https://res.cloudinary.com/kwesiblack/image/upload/v1625933534/cof95/friendship-5616035_1920-removebg-preview_gt8bs5.png"
                   srcset="https://res.cloudinary.com/kwesiblack/image/upload/v1625933534/cof95/friendship-5616035_1920-removebg-preview_gt8bs5.png"
                   alt=""
                   data-cue="fadeIn"
@@ -29,9 +33,13 @@ function Home(props) {
                       <div class="d-flex flex-row align-items-center">
                         <div>
                           <div class="icon btn btn-circle btn-md btn-soft-primary disabled mx-auto me-3">
-                            {" "}
-                            <i class="uil uil-users-alt"></i>{" "}
+                          
+                            <i class="uil uil-users-alt"></i>
                           </div>
+                          <div>
+													<h3 class="counter mb-0 text-nowrap">100+</h3>
+													
+												</div>
                         </div>
                         {/* <div>
                           <h3 class="counter mb-0 text-nowrap">25000+</h3>
@@ -68,14 +76,14 @@ function Home(props) {
                       Login
                     </Link>
                   </span>
-                  <span>
+                  {/* <span>
                     <Link
                       to="/"
                       className="btn btn-lg btn-outline-primary rounded-pill"
                     >
                       Contact Us
                     </Link>
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>
@@ -157,6 +165,7 @@ function Home(props) {
 		<section className="wrapper bg-gray">
   </section> */}
     </div>
+    </Layout>
   );
 }
 
