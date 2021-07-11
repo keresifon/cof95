@@ -62,6 +62,9 @@ function Profile(props) {
 	let twitter = _.map(member, 'twitter');
 	let facebook = _.map(member, 'facebook');
 	let image = _.map(member, 'imgURL');
+	let country =_.map(member, 'country');
+	let birthmonth =_.map(member, 'birthmonth');
+	let tshirt =_.map(member, 'tshirt');
 
 
 
@@ -113,6 +116,16 @@ function Profile(props) {
 									</nav>
 								</div>
 							</div>
+							<div className="pt-2"></div>
+							<div className="card">
+								<div className="card-body">
+									
+									<h4 className="mb-1">T-Shirt Size:{tshirt}</h4>
+									<div className="meta mb-2">Birth Month:{birthmonth}</div>
+									
+									
+								</div>
+							</div>
 						</div>
 						<div className="col-md-6 col-lg-4 ">
 							<div className="card">
@@ -133,6 +146,7 @@ function Profile(props) {
 									<p className="mb-2">
 										{address}
 										<br />
+										{country}
 									</p>
 								</div>
 							</div>
