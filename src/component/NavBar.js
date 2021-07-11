@@ -2,7 +2,8 @@ import React , {useContext}from 'react';
 import { Link } from 'react-router-dom';
 //import logodark from '../component/img/logo-dark.png';
 //import logolight from '../component/img/logo-light.png';
-import { AmplifySignOut } from '@aws-amplify/ui-react';
+//import { AmplifySignOut } from '@aws-amplify/ui-react';
+import SignOut from './SignOut';
 //import '../../src/component/css/theme/aqua.css';
 import { UserContext } from '../context/Context';
 import { Navbar, Nav, NavDropdown,  } from 'react-bootstrap';
@@ -41,7 +42,7 @@ function NavBar(props) {
       </NavDropdown>
     </Nav>
 	<Nav className="ml-auto">
-	{user && (<AmplifySignOut /> )}
+	{user && (<SignOut /> )}
 </Nav>
     
   </Navbar.Collapse>
