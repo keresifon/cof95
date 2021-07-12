@@ -90,7 +90,7 @@ function BlogTop(props) {
                         <ul className="post-meta d-flex mb-0">
                           <li className="post-date">
                             <i className="uil uil-calendar-alt"></i>
-                            <span>5 Jul 2021</span>
+                            <span>{ new Date(p.date).toDateString()}</span>
                           </li>
                           <li className="post-author">
                             < Link to="#">
@@ -98,17 +98,17 @@ function BlogTop(props) {
                               <span>By {p.authorname}</span>
                             </Link>
                           </li>
-                          <li className="post-comments">
-                            {/* < Link to="#">
+                          {/*<li className="post-comments">
+                             < Link to="#">
                               <i className="uil uil-comment"></i>3
                               <span> Comments</span>
-                            </Link> */}
+                            </Link>
                           </li>
                           <li className="post-likes ms-auto">
                             < Link to="#">
                               <i className="uil uil-heart-alt"></i>3
                             </Link>
-                          </li>
+                          </li> */}
                         </ul>
                       </div>
                     </div>
