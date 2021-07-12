@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const query = `
 query {
     blogCollection(
-      where: { category_contains_none: "Opinion" }
+      where: { category_contains_none: "Profile" }
       order: date_DESC
     ) {
       items {
@@ -29,6 +29,8 @@ query {
 `;
 
 const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
+
+
 
 function BlogBase(props) {
   const [page, setPage] = useState(null);
@@ -56,7 +58,7 @@ function BlogBase(props) {
   if (!page) {
     return "Loading...";
   }
-
+console.log(page.length)
   return (
     <div className="blog grid grid-view">
       <div className="row isotope gx-md-8 gy-8 mb-8">

@@ -8,6 +8,7 @@ import a1 from "../../component/img/photos/a1.jpg";
 import a2 from "../../component/img/photos/a2.jpg";
 import a3 from "../../component/img/photos/a3.jpg";
 import BlogTop from "./BlogTop";
+import Categories from "./category/Categories";
 
   
   
@@ -227,29 +228,7 @@ function Blog(props) {
                   </li>
                 </ul>
               </div>
-              <div className="widget">
-                <h4 className="widget-title mb-3">Categories</h4>
-                <ul className="unordered-list bullet-primary text-reset">
-                  <li>
-                    < Link to="#">Teamwork (21)</Link>
-                  </li>
-                  <li>
-                    < Link to="#">Ideas (19)</Link>
-                  </li>
-                  <li>
-                    < Link to="#">Workspace (16)</Link>
-                  </li>
-                  <li>
-                    < Link to="#">Coding (7)</Link>
-                  </li>
-                  <li>
-                    < Link to="#">Meeting (12)</Link>
-                  </li>
-                  <li>
-                    < Link to="#">Business Tips (14)</Link>
-                  </li>
-                </ul>
-              </div>
+              <Categories />
               <div className="widget">
                 <h4 className="widget-title mb-3">Tags</h4>
                 <ul className="list-unstyled tag-list">

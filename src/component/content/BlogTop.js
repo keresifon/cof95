@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const query = `
 query {
     blogCollection(
-      where: { category_contains_all: "Opinion" }
+      where: { category_contains_all: "Profile" }
       order: date_DESC
       limit:3
     ) {
