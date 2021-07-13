@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import b4 from "../../component/img/photos/b4.jpg";
 import { Link } from "react-router-dom";
+//import _ from "lodash"
 
 const query = `
 query {
@@ -21,6 +22,7 @@ query {
         date
         category
         authorname
+        slug
       }
     }
   }  
@@ -55,13 +57,16 @@ function BlogTop(props) {
   if (!page) {
     return "Loading...";
   }
+ 
+  
+
     return (
         <div className="blog classic-view">
                 {page.map((p) => (
                   < article className="post">
                     <div className="card">
                       <figure className="card-img-top overlay overlay1 hover-scale">
-                        < Link to="blog-post.html">
+                        < Link to={p.slug}>
                           {p.image && <img src={p.image.url} alt="" />}
                           {!p.image && <img src={b4} alt="" />}
                         </Link>
@@ -77,7 +82,7 @@ function BlogTop(props) {
                             </Link>
                           </div>
                           <h2 className="post-title mt-1 mb-0">
-                            < Link className="link-dark" to="blog-post.html">
+                            < Link className="link-dark" to={`/blog/${p.slug}`}>
                               {p.title}
                             </Link>
                           </h2>

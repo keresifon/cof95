@@ -13,6 +13,7 @@ import Members from "./component/Members";
 import AccSatement from "./component/content/AccSatement";
 import Gallery from "./component/content/Gallery";
 import Blog from "./component/content/Blog";
+import BlogTemplate from "./component/content/BlogTemplate";
 
 function App() {
   const [imageUrl, setImageUrl] = useState("");
@@ -27,8 +28,8 @@ function App() {
               {/*	<Route path="/products/:id" component={ProductDetails} />
 								<Route path="/product/:category" component={ProductCategory} />
 								<Route path="/products" component={Products} />
-								<Route path="/cart/:id?" component={Cart} />
-								<Route path="/login" component={LoginForm} />*/}
+								<Route path="/cart/:id?" component={Cart} />*/}
+								<Route path="/blog/:slug" component={BlogTemplate} />
               <Route path="/blog" component={Blog} />
               <Route path="/gallery" component={Gallery} />
               <Route path="/finstatement" component={AccSatement} />

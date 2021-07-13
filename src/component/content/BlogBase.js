@@ -58,7 +58,7 @@ function BlogBase(props) {
   if (!page) {
     return "Loading...";
   }
-console.log(page.length)
+
   return (
     <div className="blog grid grid-view">
       <div className="row isotope gx-md-8 gy-8 mb-8">
