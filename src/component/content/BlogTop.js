@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import b4 from "../../component/img/photos/b4.jpg";
 import { Link } from "react-router-dom";
 //import _ from "lodash"
@@ -23,6 +22,7 @@ query {
         category
         authorname
         slug
+        excerpt
       }
     }
   }  
@@ -66,7 +66,7 @@ function BlogTop(props) {
                   < article className="post">
                     <div className="card">
                       <figure className="card-img-top overlay overlay1 hover-scale">
-                        < Link to={p.slug}>
+                        < Link to={`/blog/${p.slug}`}>
                           {p.image && <img src={p.image.url} alt="" />}
                           {!p.image && <img src={b4} alt="" />}
                         </Link>
@@ -88,7 +88,7 @@ function BlogTop(props) {
                           </h2>
                         </div>
                         <div className="post-content">
-                          <p>{documentToReactComponents(p.body.json)}</p>
+                          <p>{p.excerpt}</p>
                         </div>
                       </div>
                       <div className="card-footer">

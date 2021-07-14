@@ -8,7 +8,9 @@ query {
     blogCollection(order: date_DESC, limit: 5) {
       items {
         title
+        slug
         date
+        excerpt
         image {
           url
         }
@@ -59,7 +61,7 @@ function RecentPosts(props) {
 
                   <li>
                     <figure className="rounded">
-                      < Link to="blog-post.html">
+                      < Link to={`/blog/${p.slug}`}>
                       {p.image && <img src={p.image.url} alt="" />}
                           {!p.image && <img src={b4} alt="" />}
                       </Link>
@@ -67,7 +69,7 @@ function RecentPosts(props) {
                     <div className="post-content">
                       <h6 className="mb-2">
                         {" "}
-                        < Link className="link-dark" to="blog-post.html">
+                        < Link className="link-dark" to={`/blog/${p.slug}`}>
                           {p.title}
                         </Link>{" "}
                       </h6>

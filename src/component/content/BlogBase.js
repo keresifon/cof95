@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import b4 from "../../component/img/photos/b4.jpg";
 import { Link } from "react-router-dom";
 
@@ -20,6 +19,8 @@ query {
         date
         category
         authorname
+        slug
+        excerpt
       }
     }
   }
@@ -66,7 +67,7 @@ function BlogBase(props) {
           <article className="item post col-md-6">
             <div className="card">
               <figure className="card-img-top overlay overlay1 hover-scale">
-                <Link to="#">
+                <Link to={`/blog/${o.slug}`}>
                   {" "}
                   {o.image && <img src={o.image.url} alt="" />}
                   {!o.image && <img src={b4} alt="" />}
@@ -83,13 +84,13 @@ function BlogBase(props) {
                     </Link>
                   </div>
                   <h2 className="post-title h3 mt-1 mb-3">
-                    <Link className="link-dark" href="blog-post.html">
+                    <Link className="link-dark" to={`/blog/${o.slug}`}>
                       {o.title}
                     </Link>
                   </h2>
                 </div>
                 <div className="post-content">
-                  <p>{documentToReactComponents(o.body.json)}</p>
+                  <p>{o.excerpt}</p>
                 </div>
               </div>
               <div className="card-footer">
