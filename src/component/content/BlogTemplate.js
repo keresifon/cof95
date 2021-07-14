@@ -2,13 +2,20 @@ import React, { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import b4 from "../../component/img/photos/b4.jpg";
 import { Link, useParams } from "react-router-dom";
+import Categories from "./misc/Categories";
+import RecentPosts from "./misc/RecentPosts";
 import _ from "lodash";
+import Tags from "./misc/Tags"
+//import uniqid from "uniqid"
 //import { graphql } from "graphql";
 
 const query = `
   query Page($slug: String){
     blogCollection(where: { slug: $slug }) {
       items {
+        sys{
+          id
+        }
         slug
         title
         date
@@ -19,6 +26,11 @@ const query = `
         }
         image {
           url
+        }
+        contentfulMetadata {
+          tags {
+            name
+          }
         }
       }
     }
@@ -59,37 +71,37 @@ function BlogTemplate(props) {
     return p.slug === params.slug;
   });
 
-  console.log(blogPost)
+
   let category = _.map(blogPost, "category");
   let title = _.map(blogPost, "title");
   let date = _.map(blogPost, "date");
   let authorname = _.map(blogPost, "authorname");
-  //let image = _.map(blogPost, "image.url");
-
+  let tag = _.map(blogPost, "contentfulMetadata.tags");
+  let tname = _.flatten(tag)
 
   return (
-    <div>
+    <div >
       <section className="wrapper bg-soft-primary">
-        <div className="container pt-10 pb-19 pt-md-14 pb-md-20 text-center">
+        <div className="container pt-10 pb-19 pt-md-14 pb-md-10 text-center">
           <div className="row">
             <div className="col-md-10 col-xl-8 mx-auto">
               <div className="post-header">
                 <div className="post-category text-line">
-                  <Link to="#" className="hover" rel="category">
+                  <Link to="/" className="hover" rel="category">
                     {category}
                   </Link>
                 </div>
-                <h1 className="display-1 mb-4">{title}</h1>
+                <h1 className="display-1 mb-4">{title}</h1>{" "}
                 <ul className="post-meta mb-5">
                   <li className="post-date">
                     <i className="uil uil-calendar-alt"></i>
                     <span>{new Date(date).toDateString()}</span>
                   </li>
                   <li className="post-author">
-                    <Link to="#">
-                      <i className="uil uil-user"></i>
+                    <i className="uil uil-user"></i>
+                    
                       <span>{authorname}</span>
-                    </Link>
+                    
                   </li>
                 </ul>
               </div>
@@ -97,59 +109,77 @@ function BlogTemplate(props) {
           </div>
         </div>
       </section>
+      <section className="wrapper bg-light wrapper-border">
+        <div className="container inner py-8">
+          <div className="row gx-lg-8 gx-xl-12 gy-4 gy-lg-0">
+            <div className="col-md-8 align-self-center text-center text-md-start navigation">
+              <Link
+                to="/"
+                className="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0 me-1"
+              >
+                <i className="uil uil-arrow-left"></i> Prev Post
+              </Link>
+              <Link
+                to="/"
+                className="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-end mb-0"
+              >
+                Next Post <i className="uil uil-arrow-right"></i>
+              </Link>
+            </div>
+            <aside className="col-lg-4 sidebar">
+              <form className="search-form">
+                <div className="form-label-group mb-0">
+                  <input
+                    id="search-form"
+                    type="text"
+                    className="form-control"
+                    placeholder="Search"
+                  />
+                  <label htmlFor="search-form">Search</label>
+                </div>
+              </form>
+            </aside>
+          </div>
+        </div>
+      </section>
       <section className="wrapper bg-light">
-        <div className="container pb-14 pb-md-16">
-          <div className="row">
-            <div className="col-lg-10 mx-auto">
-              <div className="blog single mt-n17">
-              
-
+        <div className="container py-14 py-md-16">
+          <div className="row gx-lg-8 gx-xl-12">
+            <div className="col-lg-8">
+              <div className="blog single">
                 <div className="card">
-                {blogPost.map((p) => (
-                  <figure className="card-img-top">
-                    {p.image && <img src={p.image.url} alt="" />}
-                    {!p.image && <img src={b4} alt="" />}
-                  </figure>
+                  {blogPost.map((p) => (
+                    <figure className="card-img-top" key={p.sys.id}>
+                      {p.image && <img src={p.image.url} alt="" />}
+                      {!p.image && <img src={b4} alt="" />}
+                    </figure>
                   ))}
                   <div className="card-body">
                     <div className="classic-view">
                       <article className="post">
                         {blogPost.map((p) => (
-                          <div className="post-content mb-5">
+                          <div className="post-content mb-5" key={p.sys.id}>
                             {documentToReactComponents(p.body.json)}
                           </div>
                         ))}
                         <div className="post-footer d-md-flex flex-md-row justify-content-md-between align-items-center mt-8">
                           <div>
                             <ul className="list-unstyled tag-list mb-0">
-                              <li>
-                                <Link
-                                  to="#"
+                            {tname.map((p ,uniqid) => (
+                              <li key={uniqid}>
+                                <Link 
+                                   to="/"
                                   className="btn btn-soft-ash btn-sm rounded-pill mb-0"
                                 >
-                                  Still Life
+                                  {p.name}
                                 </Link>
                               </li>
-                              <li>
-                                <Link
-                                  to="#"
-                                  className="btn btn-soft-ash btn-sm rounded-pill mb-0"
-                                >
-                                  Urban
-                                </Link>
-                              </li>
-                              <li>
-                                <Link
-                                  to="#"
-                                  className="btn btn-soft-ash btn-sm rounded-pill mb-0"
-                                >
-                                  Nature
-                                </Link>
-                              </li>
+                            ))}
+                              
                             </ul>
                           </div>
                           <div className="mb-0 mb-md-2">
-                            <div className="dropdown share-dropdown btn-group">
+                            {/* <div className="dropdown share-dropdown btn-group">
                               <button
                                 className="btn btn-sm btn-red rounded-pill btn-icon btn-icon-start dropdown-toggle mb-0 me-0"
                                 data-bs-toggle="dropdown"
@@ -159,241 +189,63 @@ function BlogTemplate(props) {
                                 <i className="uil uil-share-alt"></i> Share{" "}
                               </button>
                               <div className="dropdown-menu">
-                                <Link className="dropdown-item" to="#">
+                                <Link className="dropdown-item" href="#">
                                   <i className="uil uil-twitter"></i>Twitter
                                 </Link>
-                                <Link className="dropdown-item" to="#">
+                                <Link className="dropdown-item" href="#">
                                   <i className="uil uil-facebook-f"></i>Facebook
                                 </Link>
-                                <Link className="dropdown-item" to="#">
+                                <Link className="dropdown-item" href="#">
                                   <i className="uil uil-linkedin"></i>Linkedin
                                 </Link>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </article>
                     </div>
                     <hr />
-                    <div className="author-info d-md-flex align-items-center mb-3">
-                      <div className="d-flex align-items-center">
-                        <figure className="user-avatar">
-                          <img
-                            className="rounded-circle"
-                            alt=""
-                            src="src/img/avatars/u5.jpg"
-                          />
-                        </figure>
-                        <div>
-                          <h6>
-                            <Link to="#" className="link-dark">
-                              Nikolas Brooten
-                            </Link>
-                          </h6>
-                          <span className="post-meta fs-15">Sales Manager</span>
-                        </div>
-                      </div>
-                      <div className="mt-3 mt-md-0 ms-auto">
-                        <Link
-                          to="#"
-                          className="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0"
-                        >
-                          <i className="uil uil-file-alt"></i> All Posts
-                        </Link>
-                      </div>
-                    </div>
-                    <p>
-                      Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                      condimentum nibh, ut fermentum massa justo sit amet risus.
-                      Maecenas faucibus mollis interdum. Fusce dapibus, tellus
-                      ac. Maecenas faucibus mollis interdum.
-                    </p>
-                    <nav className="nav social">
-                      <Link to="#">
-                        <i className="uil uil-twitter"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="uil uil-facebook-f"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="uil uil-dribbble"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="uil uil-instagram"></i>
-                      </Link>
-                      <Link to="#">
-                        <i className="uil uil-youtube"></i>
-                      </Link>
-                    </nav>
-                    <hr />
-                    <h3 className="mb-6">You Might Also Like</h3>
-                    <div
-                      className="carousel owl-carousel blog grid-view mb-16"
-                      data-margin="30"
-                      data-dots="true"
-                      data-autoplay="false"
-                      data-autoplay-timeout="5000"
-                      data-responsive='{"0":{"items": "1"}, "768":{"items": "2"}, "992":{"items": "2"}, "1200":{"items": "2"}}'
-                    >
-                      <div className="item">
-                        <article>
-                          <figure className="overlay overlay1 hover-scale rounded mb-5">
-                            <Link to="#">
-                              {" "}
-                              <img src="src/img/photos/b4.jpg" alt="" />
-                            </Link>
-                            <figcaption>
-                              <h5 className="from-top mb-0">Read More</h5>
-                            </figcaption>
-                          </figure>
-                          <div className="post-header">
-                            <div className="post-category text-line">
-                              <Link to="#" className="hover" rel="category">
-                                Coding
-                              </Link>
-                            </div>
-                            <h2 className="post-title h3 mt-1 mb-3">
-                              <Link className="link-dark" href="blog-post.html">
-                                Ligula tristique quis risus
-                              </Link>
-                            </h2>
-                          </div>
-                          <div className="post-footer">
-                            <ul className="post-meta mb-0">
-                              <li className="post-date">
-                                <i className="uil uil-calendar-alt"></i>
-                                <span>14 Apr 2021</span>
-                              </li>
-                              <li className="post-comments">
-                                <Link to="#">
-                                  <i className="uil uil-comment"></i>4
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </article>
-                      </div>
-                      <div className="item">
-                        <article>
-                          <figure className="overlay overlay1 hover-scale rounded mb-5">
-                            <Link to="#">
-                              {" "}
-                              <img src="src/img/photos/b5.jpg" alt="" />
-                            </Link>
-                            <figcaption>
-                              <h5 className="from-top mb-0">Read More</h5>
-                            </figcaption>
-                          </figure>
-                          <div className="post-header">
-                            <div className="post-category text-line">
-                              <Link to="#" className="hover" rel="category">
-                                Workspace
-                              </Link>
-                            </div>
-                            <h2 className="post-title h3 mt-1 mb-3">
-                              <Link className="link-dark" href="blog-post.html">
-                                Nullam id dolor elit id nibh
-                              </Link>
-                            </h2>
-                          </div>
-                          <div className="post-footer">
-                            <ul className="post-meta mb-0">
-                              <li className="post-date">
-                                <i className="uil uil-calendar-alt"></i>
-                                <span>29 Mar 2021</span>
-                              </li>
-                              <li className="post-comments">
-                                <Link to="#">
-                                  <i className="uil uil-comment"></i>3
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </article>
-                      </div>
-                      <div className="item">
-                        <article>
-                          <figure className="overlay overlay1 hover-scale rounded mb-5">
-                            <Link to="#">
-                              {" "}
-                              <img src="src/img/photos/b6.jpg" alt="" />
-                            </Link>
-                            <figcaption>
-                              <h5 className="from-top mb-0">Read More</h5>
-                            </figcaption>
-                          </figure>
-                          <div className="post-header">
-                            <div className="post-category text-line">
-                              <Link to="#" className="hover" rel="category">
-                                Meeting
-                              </Link>
-                            </div>
-                            <h2 className="post-title h3 mt-1 mb-3">
-                              <Link className="link-dark" href="blog-post.html">
-                                Ultricies fusce porta elit
-                              </Link>
-                            </h2>
-                          </div>
-                          <div className="post-footer">
-                            <ul className="post-meta mb-0">
-                              <li className="post-date">
-                                <i className="uil uil-calendar-alt"></i>
-                                <span>26 Feb 2021</span>
-                              </li>
-                              <li className="post-comments">
-                                <Link to="#">
-                                  <i className="uil uil-comment"></i>6
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </article>
-                      </div>
-                      <div className="item">
-                        <article>
-                          <figure className="overlay overlay1 hover-scale rounded mb-5">
-                            <Link to="#">
-                              {" "}
-                              <img src="src/img/photos/b7.jpg" alt="" />
-                            </Link>
-                            <figcaption>
-                              <h5 className="from-top mb-0">Read More</h5>
-                            </figcaption>
-                          </figure>
-                          <div className="post-header">
-                            <div className="post-category text-line">
-                              <Link to="#" className="hover" rel="category">
-                                Business Tips
-                              </Link>
-                            </div>
-                            <h2 className="post-title h3 mt-1 mb-3">
-                              <Link className="link-dark" href="blog-post.html">
-                                Morbi leo risus porta eget
-                              </Link>
-                            </h2>
-                          </div>
-                          <div className="post-footer">
-                            <ul className="post-meta mb-0">
-                              <li className="post-date">
-                                <i className="uil uil-calendar-alt"></i>
-                                <span>7 Jan 2021</span>
-                              </li>
-                              <li className="post-comments">
-                                <Link to="#">
-                                  <i className="uil uil-comment"></i>2
-                                </Link>
-                              </li>
-                            </ul>
-                          </div>
-                        </article>
-                      </div>
-                    </div>
-                    <hr />
-                    <hr />
                   </div>
                 </div>
               </div>
             </div>
+            <aside className="col-lg-4  mt-11 mt-lg-6">
+              <div className="widget">
+                <h4 className="widget-title mb-3">About Us</h4>
+                <p>
+                  Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                  condimentum nibh, ut fermentum. Nulla vitae elit libero, a
+                  pharetra augue. Donec id elit non mi porta gravida at eget
+                  metus.
+                </p>
+                
+                <div className="clearfix"></div>
+              </div>
+              <RecentPosts />
+              <Categories />
+              <Tags />
+              
+              <div className="widget">
+                <h4 className="widget-title mb-3">Archive</h4>
+                <ul className="unordered-list bullet-primary text-reset">
+                  <li>
+                    <Link to="#">February 2019</Link>
+                  </li>
+                  <li>
+                    <Link to="#">January 2019</Link>
+                  </li>
+                  <li>
+                    <Link to="#">December 2018</Link>
+                  </li>
+                  <li>
+                    <Link to="#">November 2018</Link>
+                  </li>
+                  <li>
+                    <Link to="#">October 2018</Link>
+                  </li>
+                </ul>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

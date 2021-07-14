@@ -9,6 +9,9 @@ query {
       order: date_DESC
     ) {
       items {
+        sys{
+          id
+        }
         title
         image {
           url
@@ -64,9 +67,9 @@ function BlogBase(props) {
     <div className="blog grid grid-view">
       <div className="row isotope gx-md-8 gy-8 mb-8">
         {page.map((o) => (
-          <article className="item post col-md-6">
+          <article className="item post col-md-6" key={o.sys.id}>
             <div className="card">
-              <figure className="card-img-top overlay overlay1 hover-scale">
+              <figure className="card-img-top overlay overlay1 hover-scale" >
                 <Link to={`/blog/${o.slug}`}>
                   {" "}
                   {o.image && <img src={o.image.url} alt="" />}

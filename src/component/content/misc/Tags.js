@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 //import b4 from "../../component/img/photos/b4.jpg";
 import { Link } from "react-router-dom";
 import _ from 'lodash';
-
+//import uniqid from 'uniqid'
 
 const query = `
 query {
     blogCollection {
       items {
+        sys{
+          id
+        }
         contentfulMetadata {
           tags {
             name
@@ -44,28 +47,28 @@ function Tags(props) {
                 console.error(errors);
               }
       
-              setPage(data.blogCollection.items[0].contentfulMetadata[0]);
+              setPage(data.blogCollection.items);
             });
         }, []);
         if (!page) {
           return "Loading...";
         }
+        let tags = _.map(page, "contentfulMetadata.tags");
 
-        console.log("Tags",page)
-        console.log("L1", _.union(page))
-        console.log("L2", _.valuesIn(page))
-        console.log("L3", Object.assign({}, ...page))        
+        let tagname = _.flatten(tags)
+
+                
     return (
         <div className="widget">
                 <h4 className="widget-title mb-3">Tags</h4>
                 <ul className="list-unstyled tag-list">
-                {page.map((p) => (
-                  <li>
+                {tagname.map((p , uniqid) => (
+                  <li key={uniqid}>
                     < Link
                       to="#"
                       className="btn btn-soft-ash btn-sm rounded-pill"
                     >
-                      {p.tags[0].name[0]}
+                      {p.name}
                     </Link>
                   </li>
                 ))}

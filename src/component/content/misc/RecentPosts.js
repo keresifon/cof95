@@ -7,6 +7,9 @@ const query = `
 query {
     blogCollection(order: date_DESC, limit: 5) {
       items {
+        sys{
+          id
+        }
         title
         slug
         date
@@ -59,7 +62,7 @@ function RecentPosts(props) {
                 <ul className="image-list">
                 {page.map((p) => (
 
-                  <li>
+                  <li key={p.sys.id}>
                     <figure className="rounded">
                       < Link to={`/blog/${p.slug}`}>
                       {p.image && <img src={p.image.url} alt="" />}

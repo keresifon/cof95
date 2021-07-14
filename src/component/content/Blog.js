@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import BlogBase from "./BlogBase";
-
-//import Layout from '../Layout';
 import BlogTop from "./BlogTop";
 import Categories from "./misc/Categories";
 import RecentPosts from "./misc/RecentPosts";
-//import Tags from "./misc/Tags";
+import Tags from "./misc/Tags";
 
   
   
@@ -17,7 +14,7 @@ import RecentPosts from "./misc/RecentPosts";
 function Blog(props) {
   
   return (
-    <div class="content-wrapper">
+    <div className="content-wrapper">
       <section className="wrapper bg-soft-primary">
         <div className="container pt-10 pb-12 pt-md-14 pb-md-16 text-center">
           <div className="row">
@@ -129,6 +126,7 @@ function Blog(props) {
               </div>
               <RecentPosts />
               <Categories />
+              <Tags/>
               {/* <Tags/> */}
               <div className="widget">
                 <h4 className="widget-title mb-3">Archive</h4>

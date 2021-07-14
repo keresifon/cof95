@@ -1,4 +1,3 @@
-//import logo from './logo.svg';
 import React, { useState } from "react";
 import "./App.scss";
 import { Switch, Route } from "react-router-dom";
@@ -15,6 +14,8 @@ import Gallery from "./component/content/Gallery";
 import Blog from "./component/content/Blog";
 import BlogTemplate from "./component/content/BlogTemplate";
 
+
+
 function App() {
   const [imageUrl, setImageUrl] = useState("");
   const [user, setUser] = useState("");
@@ -28,7 +29,7 @@ function App() {
               {/*	<Route path="/products/:id" component={ProductDetails} />
 								<Route path="/product/:category" component={ProductCategory} />
 								<Route path="/products" component={Products} />
-								<Route path="/cart/:id?" component={Cart} />*/}
+								<Route path="/tag/" component={Tags} />*/}
 								<Route path="/blog/:slug" component={BlogTemplate} />
               <Route path="/blog" component={Blog} />
               <Route path="/gallery" component={Gallery} />

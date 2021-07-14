@@ -11,6 +11,9 @@ query {
       limit:3
     ) {
       items {
+        sys{
+          id
+        }
         title
         image {
           url
@@ -63,7 +66,7 @@ function BlogTop(props) {
     return (
         <div className="blog classic-view">
                 {page.map((p) => (
-                  < article className="post">
+                  < article className="post" key={p.sys.id}>
                     <div className="card">
                       <figure className="card-img-top overlay overlay1 hover-scale">
                         < Link to={`/blog/${p.slug}`}>

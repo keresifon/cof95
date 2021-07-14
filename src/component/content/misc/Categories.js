@@ -8,6 +8,9 @@ const query = `
 query {
   blogCollection {
     items {
+      sys{
+        id
+      }
       category
     }
   }
