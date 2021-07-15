@@ -12,8 +12,9 @@ import Members from "./component/Members";
 import AccSatement from "./component/content/AccSatement";
 import Gallery from "./component/content/Gallery";
 import Blog from "./component/content/Blog";
-import BlogTemplate from "./component/content/BlogTemplate";
-import HomeTemplate from "./component/content/HomeTemplate";
+import BlogTemplate from "./component/content/templates/BlogTemplate";
+import HomeTemplate from "./component/content/templates/HomeTemplate";
+import TagTemplate from './component/content/templates/TagTemplate';
 
 
 
@@ -28,8 +29,8 @@ function App() {
             <NavBar />
             <Switch>
               {/*	<Route path="/products/:id" component={ProductDetails} />
-								<Route path="/product/:category" component={ProductCategory} />
-								<Route path="/products" component={Products} />*/}
+								<Route path="/product/:category" component={ProductCategory} />*/}
+							<Route path="/tags/:tag" component={TagTemplate} />
 								<Route path="/con/:slug" component={HomeTemplate} />
 								<Route path="/blog/:slug" component={BlogTemplate} />
               <Route path="/blog" component={Blog} />

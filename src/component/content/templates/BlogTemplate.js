@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import b4 from "../../component/img/photos/b4.jpg";
+import b4 from "../../../component/img/photos/b4.jpg";
 import { Link, useParams } from "react-router-dom";
-import Categories from "./misc/Categories";
-import RecentPosts from "./misc/RecentPosts";
+import Categories from "../misc/Categories";
+import RecentPosts from "../misc/RecentPosts";
 import _ from "lodash";
-import Tags from "./misc/Tags"
+import Tags from "../misc/Tags"
 //import uniqid from "uniqid"
 //import { graphql } from "graphql";
 
