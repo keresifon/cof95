@@ -8,9 +8,7 @@ const query = `
 query {
     blogCollection {
       items {
-        sys{
-          id
-        }
+        
         contentfulMetadata {
           tags {
             name
@@ -54,21 +52,22 @@ function Tags(props) {
           return "Loading...";
         }
         let tags = _.map(page, "contentfulMetadata.tags");
-
         let tagname = _.flatten(tags)
-
+        let tag = _.uniqBy(_.map(tagname, "name"))
+        
+        
                 
     return (
         <div className="widget">
                 <h4 className="widget-title mb-3">Tags</h4>
                 <ul className="list-unstyled tag-list">
-                {tagname.map((p , uniqid) => (
+                {tag.map((p , uniqid) => (
                   <li key={uniqid}>
                     < Link
                       to="#"
                       className="btn btn-soft-ash btn-sm rounded-pill"
                     >
-                      {p.name}
+                      {p}
                     </Link>
                   </li>
                 ))}
