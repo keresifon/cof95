@@ -13,6 +13,7 @@ import AccSatement from "./component/content/AccSatement";
 import Gallery from "./component/content/Gallery";
 import Blog from "./component/content/Blog";
 import BlogTemplate from "./component/content/BlogTemplate";
+import HomeTemplate from "./component/content/HomeTemplate";
 
 
 
@@ -28,8 +29,8 @@ function App() {
             <Switch>
               {/*	<Route path="/products/:id" component={ProductDetails} />
 								<Route path="/product/:category" component={ProductCategory} />
-								<Route path="/products" component={Products} />
-								<Route path="/tag/" component={Tags} />*/}
+								<Route path="/products" component={Products} />*/}
+								<Route path="/con/:slug" component={HomeTemplate} />
 								<Route path="/blog/:slug" component={BlogTemplate} />
               <Route path="/blog" component={Blog} />
               <Route path="/gallery" component={Gallery} />
