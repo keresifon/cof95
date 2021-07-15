@@ -106,9 +106,7 @@ function Home(props) {
               <div className="widget">
                 <h4 className="widget-title mb-3">Need Help?</h4>
                 <ul className="list-unstyled text-reset mb-0">
-                  <li>
-                    <Link to="/">Support</Link>
-                  </li>
+                  
                   <li>
                     <Link to="/">Terms of Use</Link>
                   </li>
@@ -131,7 +129,7 @@ function Home(props) {
                 </ul>
               </div>
             </div>
-            <div className="col-md-4 col-lg-2">
+            {/* <div className="col-md-4 col-lg-2">
               <div className="widget">
                 <h4 className="widget-title mb-3">Get in Touch</h4>
                 <address>
@@ -142,28 +140,12 @@ function Home(props) {
                 </Link>
                 <br /> +00 (123) 456 78 90
               </div>
-            </div>
+            </div> */}
           </div>
           <hr className="mt-13 mt-md-15 mb-7" />
         </div>
       </footer>
-      {/* <section className="wrapper bg-gray">
-			<div className="container pt-12 pt-md-16 text-center">
-				<div className="row">
-					<div className="col-lg-8 col-xxl-7 mx-auto text-center" data-cues="slideInDown" data-group="page-title" data-delay="600">
-						<h2 className="fs-16 text-uppercase ls-xl text-dark mb-4">"Boys and girls in unity serve"</h2>
-						<h1 className="display-1 fs-58 mb-7">FGCE Class of 95</h1>
-						<div className="d-flex justify-content-center" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
-							<span><Link to="/profile" className="btn btn-lg btn-primary rounded-pill me-2">Login</Link></span>
-							<span><Link to="/" className="btn btn-lg btn-outline-primary rounded-pill">Contact Us</Link></span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<figure className="position-absoute"  style={{bottom:0, left: 0, zIndex:4}}><img src={bgimage} alt="" /></figure> 
-		</section>
-		<section className="wrapper bg-gray">
-  </section> */}
+     
     </div>
     </Layout>
   );
