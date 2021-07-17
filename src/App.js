@@ -30,7 +30,6 @@ function App() {
               {/*	<Route path="/products/:id" component={ProductDetails} />
 								<Route path="/product/:category" component={ProductCategory} />*/}
               <Route path="/category/:category" component={CategoryTemplate} />
-
               <Route path="/tags/:tag" component={TagTemplate} />
               <Route path="/con/:slug" component={HomeTemplate} />
               <Route path="/blog/:slug" component={BlogTemplate} />

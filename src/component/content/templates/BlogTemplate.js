@@ -87,7 +87,7 @@ function BlogTemplate(props) {
             <div className="col-md-10 col-xl-8 mx-auto">
               <div className="post-header">
                 <div className="post-category text-line">
-                  <Link to="/" className="hover" rel="category">
+                  <Link to={`/category/${category}`} className="hover" rel="category">
                     {category}
                   </Link>
                 </div>
@@ -168,7 +168,7 @@ function BlogTemplate(props) {
                             {tname.map((p ,uniqid) => (
                               <li key={uniqid}>
                                 <Link 
-                                   to="/"
+                                   to={`/tags/${p.name}`}
                                   className="btn btn-soft-ash btn-sm rounded-pill mb-0"
                                 >
                                   {p.name}

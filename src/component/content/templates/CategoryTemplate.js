@@ -16,7 +16,7 @@ query Page($category: [String] ){
   image{
     url
   }
-      
+  slug    
   category
   date
   authorname
@@ -70,14 +70,14 @@ function CategoryTemplate(props) {
   return (
     <div>
       <section className="wrapper bg-soft-primary">
-        <div className="container pt-10 pb-12 pt-md-14 pb-md-16 text-center">
+        <div className="container pt-10 pb-2 pt-md-10 pb-md-10 text-center">
           <div className="row">
             <div className="col-lg-8 mx-auto">
-              <h1 className="display-1 mb-3">Blocks - Blog</h1>
-              <nav className="d-inline-block" aria-label="breadcrumb">
+              <h1 className="display-1 mb-3">{params.category}</h1>
+              {/* <nav className="d-inline-block" aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
-                    <Link to="#">Home</Link>
+                    <Link to="/">Home</Link>
                   </li>
                   <li className="breadcrumb-item">
                     <Link to="#">Blocks</Link>
@@ -86,7 +86,7 @@ function CategoryTemplate(props) {
                     Blog
                   </li>
                 </ol>
-              </nav>
+              </nav> */}
             </div>
           </div>
         </div>
@@ -95,13 +95,13 @@ function CategoryTemplate(props) {
         <div className="container py-14 py-md-16">
           <h2 className="display-4 mb-3 text-center">Our Journal</h2>
           <p className="lead fs-lg mb-10 text-center px-md-16 px-lg-21 px-xl-0">
-            Here are the latest company news from our blog that got the most
-            attention.
+            Here are the latest news and articles in the {params.category}{" "}
+            category.
           </p>
           <div className="blog grid grid-view">
             <div className="row isotope gx-md-8 gy-8 mb-8">
               {blogPost.map((o) => (
-                <article className="item post col-md-3" key={o.sys.id}>
+                <article className="item post col-md-4" key={o.sys.id}>
                   <div className="card">
                     <figure className="card-img-top overlay overlay1 hover-scale">
                       <Link to={`/blog/${o.slug}`}>
@@ -115,11 +115,11 @@ function CategoryTemplate(props) {
                     </figure>
                     <div className="card-body">
                       <div className="post-header">
-                        <div className="post-category text-line">
+                        {/* <div className="post-category text-line">
                           <Link to="#" className="hover" rel="category">
                             {o.category}
                           </Link>
-                        </div>
+                        </div> */}
                         <h2 className="post-title h3 mt-1 mb-3">
                           <Link className="link-dark" to={`/blog/${o.slug}`}>
                             {o.title}

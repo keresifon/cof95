@@ -22,6 +22,7 @@ query($tag: [String]) {
       date
       authorname
       excerpt
+      slug
     }
   }
 }
@@ -58,15 +59,16 @@ function TagTemplate(props) {
   }
 
   const tag = _.filter(page, { tag: [params.tag] });
+  const pageTitle = _.capitalize(params.tag)
 
   return (
     <div>
       <section className="wrapper bg-soft-primary">
-        <div className="container pt-10 pb-12 pt-md-14 pb-md-16 text-center">
+        <div className="container pt-10 pb-5 pt-md-10 pb-md-5 text-center">
           <div className="row">
             <div className="col-lg-8 mx-auto">
-              <h1 className="display-1 mb-3">Blocks - Blog</h1>
-              <nav className="d-inline-block" aria-label="breadcrumb">
+              <h1 className="display-1 mb-3">{pageTitle}</h1>
+              {/* <nav className="d-inline-block" aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
                     <Link to="#">Home</Link>
@@ -78,7 +80,7 @@ function TagTemplate(props) {
                     Blog
                   </li>
                 </ol>
-              </nav>
+              </nav> */}
             </div>
           </div>
         </div>
@@ -87,13 +89,12 @@ function TagTemplate(props) {
         <div className="container py-14 py-md-16">
           <h2 className="display-4 mb-3 text-center">Our Journal</h2>
           <p className="lead fs-lg mb-10 text-center px-md-16 px-lg-21 px-xl-0">
-            Here are the latest company news from our blog that got the most
-            attention.
+            Here are the latest news and articles from the {params.tag} tag.
           </p>
           <div className="blog grid grid-view">
             <div className="row isotope gx-md-8 gy-8 mb-8">
               {tag.map((o) => (
-                <article className="item post col-md-3" key={o.sys.id}>
+                <article className="item post col-md-4" key={o.sys.id}>
                   <div className="card">
                     <figure className="card-img-top overlay overlay1 hover-scale">
                       <Link to={`/blog/${o.slug}`}>
@@ -108,7 +109,7 @@ function TagTemplate(props) {
                     <div className="card-body">
                       <div className="post-header">
                         <div className="post-category text-line">
-                          <Link to="#" className="hover" rel="category">
+                          <Link to={`/category/${o.category}`} className="hover" rel="category">
                             {o.category}
                           </Link>
                         </div>
