@@ -80,7 +80,7 @@ function BlogTop(props) {
                       <div className="card-body">
                         <div className="post-header">
                           <div className="post-category text-line">
-                            < Link to="#" className="hover" rel="category">
+                            < Link to={`/category/${p.category}`} className="hover" rel="category">
                               {p.category}
                             </Link>
                           </div>

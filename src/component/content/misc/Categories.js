@@ -53,18 +53,19 @@ const opinion = _.filter(page,{category:["Opinion"]})
 
 
 
+
   return (
     <div className="widget">
       <h4 className="widget-title mb-3">Categories</h4>
       <ul className="unordered-list bullet-primary text-reset">
         <li>
-          <Link to="#">Profile ({profile.length})</Link>
+          <Link to="/category/Profile">Profile ({profile.length})</Link>
         </li>
         <li>
-          <Link to="#">News ({news.length})</Link>
+          <Link to="/category/News">News ({news.length})</Link>
         </li>
         <li>
-          <Link to="#">Opinion ({opinion.length})</Link>
+          <Link to="/category/Opinion">Opinion ({opinion.length})</Link>
         </li>
         
       </ul>

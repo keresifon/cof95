@@ -82,7 +82,7 @@ function BlogBase(props) {
               <div className="card-body">
                 <div className="post-header">
                   <div className="post-category text-line">
-                    <Link to="#" className="hover" rel="category">
+                    <Link to={`/category/${o.category}`} className="hover" rel="category">
                       {o.category}
                     </Link>
                   </div>

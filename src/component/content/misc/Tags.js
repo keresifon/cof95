@@ -6,17 +6,12 @@ import _ from "lodash";
 
 const query = `
 query {
-    blogCollection {
-      items {
-        contentfulMetadata {
-          tags {
-            name
-          }
-        }
-      }
+  blogCollection {
+    items {
+      tag
     }
   }
-  
+}  
 `;
 
 const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
@@ -47,15 +42,15 @@ function Tags(props) {
   if (!page) {
     return "Loading...";
   }
-  let tags = _.map(page, "contentfulMetadata.tags");
-  let tagname = _.flatten(tags);
-  let tag = _.uniqBy(_.map(tagname, "name"));
+  let tags = _.map(page, "tag");
+  let tagname = _.uniqBy(_.flatten(tags));
+  
 
   return (
     <div className="widget">
       <h4 className="widget-title mb-3">Tags</h4>
       <ul className="list-unstyled tag-list">
-        {tag.map((p, uniqid) => (
+        {tagname.map((p, uniqid) => (
           <li key={uniqid}>
             <Link to={`/tags/${p}`} className="btn btn-soft-ash btn-sm rounded-pill">
               {p}

@@ -14,9 +14,8 @@ import Gallery from "./component/content/Gallery";
 import Blog from "./component/content/Blog";
 import BlogTemplate from "./component/content/templates/BlogTemplate";
 import HomeTemplate from "./component/content/templates/HomeTemplate";
-import TagTemplate from './component/content/templates/TagTemplate';
-
-
+import TagTemplate from "./component/content/templates/TagTemplate";
+import CategoryTemplate from "./component/content/templates/CategoryTemplate";
 
 function App() {
   const [imageUrl, setImageUrl] = useState("");
@@ -30,9 +29,11 @@ function App() {
             <Switch>
               {/*	<Route path="/products/:id" component={ProductDetails} />
 								<Route path="/product/:category" component={ProductCategory} />*/}
-							<Route path="/tags/:tag" component={TagTemplate} />
-								<Route path="/con/:slug" component={HomeTemplate} />
-								<Route path="/blog/:slug" component={BlogTemplate} />
+              <Route path="/category/:category" component={CategoryTemplate} />
+
+              <Route path="/tags/:tag" component={TagTemplate} />
+              <Route path="/con/:slug" component={HomeTemplate} />
+              <Route path="/blog/:slug" component={BlogTemplate} />
               <Route path="/blog" component={Blog} />
               <Route path="/gallery" component={Gallery} />
               <Route path="/finstatement" component={AccSatement} />

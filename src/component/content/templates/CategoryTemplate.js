@@ -6,30 +6,36 @@ import b4 from "../../../component/img/photos/b4.jpg";
 import _ from "lodash";
 
 const query = `
-query($tag: [String]) {
-  blogCollection(where: { tag_contains_all: $tag }) {
+query Page($category: [String] ){
+  blogCollection (where:{category_contains_all:$category}){
     items {
-      tag
-      sys {
-        id
-      }
+  sys{
+    id
+  }
       title
-      image {
-        url
-      }
-
-      category
-      date
-      authorname
-      excerpt
+  image{
+    url
+  }
+      
+  category
+  date
+  authorname
+  excerpt
+  contentfulMetadata {
+    tags {
+      id
+    }
+    }
+      
     }
   }
 }
+
 `;
 
 const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
 
-function TagTemplate(props) {
+function CategoryTemplate(props) {
   const [page, setPage] = useState(null);
   const params = useParams();
   useEffect(() => {
@@ -57,7 +63,9 @@ function TagTemplate(props) {
     return "Loading...";
   }
 
-  const tag = _.filter(page, { tag: [params.tag] });
+  const blogPost = _.filter(page, function (p) {
+    return p.category[0] === params.category;
+  });
 
   return (
     <div>
@@ -92,7 +100,7 @@ function TagTemplate(props) {
           </p>
           <div className="blog grid grid-view">
             <div className="row isotope gx-md-8 gy-8 mb-8">
-              {tag.map((o) => (
+              {blogPost.map((o) => (
                 <article className="item post col-md-3" key={o.sys.id}>
                   <div className="card">
                     <figure className="card-img-top overlay overlay1 hover-scale">
@@ -148,4 +156,4 @@ function TagTemplate(props) {
   );
 }
 
-export default TagTemplate;
+export default CategoryTemplate;
