@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../Layout";
 import "../../../src/component/css/theme/aqua.css";
 import { SRLWrapper } from "simple-react-lightbox";
-import { CloudinaryContext, Image } from "cloudinary-react";
+import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 import axios from "axios";
 
 const { REACT_APP_CLOUD_NAME } = process.env;
@@ -28,7 +28,6 @@ function Gallery(props) {
     return "Loading...";
   }
 
-
   return (
     <Layout>
       <SRLWrapper>
@@ -39,10 +38,9 @@ function Gallery(props) {
                 <div className="row">
                   <div className="col-lg-8 mx-auto">
                     <h1 className="display-1 mb-3">Gallery</h1>
-					<p className="lead fs-lg mb-10 text-center px-md-16 px-lg-21 px-xl-0">
-            Welcome to the photo gallery, click on an image to expand
-          </p>
-          
+                    <p className="lead fs-lg mb-10 text-center px-md-16 px-lg-21 px-xl-0">
+                      Welcome to the photo gallery, click on an image to expand
+                    </p>
                   </div>
                 </div>
               </div>
@@ -54,7 +52,16 @@ function Gallery(props) {
                 {image.map((i) => (
                   <div className="item col-md-2" key={i.public_id}>
                     <figure className="lift rounded mb-3">
-                      <Image publicId={i.public_id} />
+                      <Image publicId={i.public_id}>
+                        <Transformation
+                          quality="75"
+                          fetchFormat="auto"
+                          dpr="auto"
+                          responsive
+                          //width="auto"
+                          //crop="scale"
+                        />
+                      </Image>
                     </figure>
 
                     <p>{i.context.custom.caption}</p>
