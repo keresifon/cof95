@@ -4091,7 +4091,7 @@ textarea.form-control-lg {
 }
 
 .dropdown-menu-dark .dropdown-item:hover, .dropdown-menu-dark .dropdown-item:focus {
-  color: #fff;
+  color: #54a8c7;
   background-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -26692,7 +26692,7 @@ fieldset:disabled .btn.btn-circle {
     background: none;
   }
   .navbar .navbar-collapse .dropdown-menu .dropdown-item {
-    color: #fff;
+    color: #000;
     padding-left: 1rem;
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
