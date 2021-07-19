@@ -29,7 +29,7 @@ function NavBar(props) {
 	  {user && ( <Nav.Link as={Link} to="/profile">Profile</Nav.Link> )}
 	  {user && (<Nav.Link as={Link} to="/finstatement">Accounts</Nav.Link> )}
 	  {user && (<Nav.Link as={Link} to="/members">Members</Nav.Link>)}
-    {/* <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link> */}
+     <Nav.Link as={Link} to="/gallery">Gallery</Nav.Link> 
       <NavDropdown title="Category" id="basic-nav-dropdown">
         <NavDropdown.Item as={Link} to="/category/Profile">Profile</NavDropdown.Item>
         <NavDropdown.Item as={Link} to="/category/News">News</NavDropdown.Item>

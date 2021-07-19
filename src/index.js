@@ -1,16 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 //import './component/css/theme/aqua.css'
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {  BrowserRouter } from 'react-router-dom'
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import SimpleReactLightbox from "simple-react-lightbox";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
-    </BrowserRouter>,
-  document.getElementById('root')
+    <SimpleReactLightbox>
+      <App />
+    </SimpleReactLightbox>
+  </BrowserRouter>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

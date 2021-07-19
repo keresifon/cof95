@@ -1,50 +1,74 @@
-import React from 'react';
-import Layout from '../Layout';
-import p1 from "../../component/img/photos/p1.jpg";
-import p1full from "../../component/img/photos/p1-full.jpg";
-import p2 from "../../component/img/photos/p2.jpg";
-import p2full from "../../component/img/photos/p2-full.jpg";
-import p3 from "../../component/img/photos/p3.jpg";
-import p4 from "../../component/img/photos/p4.jpg";
+import React, { useState, useEffect } from "react";
+import Layout from "../Layout";
 import "../../../src/component/css/theme/aqua.css";
+import { SRLWrapper } from "simple-react-lightbox";
+import { CloudinaryContext, Image } from "cloudinary-react";
+import axios from "axios";
 
-
-
-
-
-
+const { REACT_APP_CLOUD_NAME } = process.env;
 
 function Gallery(props) {
-    return (
-        <Layout>
+  const [image, setImage] = useState(null);
 
-        <div className="container">
-        <section id="lightbox" className="wrapper pt-16 pb-2">
-						<h2 className="display-5 mb-7">Lightbox</h2>
-						<div className="row gy-10 light-gallery-wrapper">
-							<div className="item col-md-6">
-								<figure className="lift rounded mb-4"><a href={p1full} className="lightbox"><img src={p1} srcset="src/img/photos/p1@2x.jpg 2x" alt="" /></a></figure>
-								<h3>Image</h3>
-							</div>
-							<div className="item col-md-6">
-								<figure className="lift rounded mb-4"><a href={p2full} className="lightbox" data-sub-html="<h5>Heading</h5><p>Purus Vulputate Sem Tellus Quam</p>"><img src={p2} srcset="src/img/photos/p2@2x.jpg 2x" alt="" /></a></figure>
-								<h3>Caption Example</h3>
-							</div>
-							<div className="item col-md-6">
-								<figure className="lift rounded mb-4"><a href="https://www.youtube.com/watch?v=j_Y2Gwaj7Gs" className="lightbox"><img src={p3} srcset="src/img/photos/p3@2x.jpg 2x" alt="" /></a></figure>
-								<h3>YouTube</h3>
-							</div>
-							<div className="item col-md-6">
-								<figure className="lift rounded mb-4"><a href="https://vimeo.com/15801179" className="lightbox"><img src={p4} srcset="src/img/photos/p4@2x.jpg 2x" alt="" /></a></figure>
-								<h3>Vimeo</h3>
-							</div>
-						</div>
-						
-					</section>
-		    
-        </div>
-        </Layout>
-    );
+  //   axios
+  //     .get("https://res.cloudinary.com/kwesiblack/image/list/gallery.json")
+  //     .then((res) => {
+  //       console.log(res.data.resources);
+  //       setImage(res.data.resources);
+  //     });
+
+  useEffect(() => {
+    axios
+      .get("https://res.cloudinary.com/kwesiblack/image/list/gallery.json")
+      .then((res) => {
+        console.log(res.data.resources);
+        setImage(res.data.resources);
+      });
+  }, []);
+  if (!image) {
+    return "Loading...";
+  }
+
+  console.log("Image", image);
+
+  return (
+    <Layout>
+      <SRLWrapper>
+        <CloudinaryContext cloud_name={REACT_APP_CLOUD_NAME}>
+          <div>
+            <section className="wrapper bg-soft-primary">
+              <div className="container pt-10 pb-2 pt-md-10 pb-md-10 text-center">
+                <div className="row">
+                  <div className="col-lg-8 mx-auto">
+                    <h1 className="display-1 mb-3">Gallery</h1>
+					<p className="lead fs-lg mb-10 text-center px-md-16 px-lg-21 px-xl-0">
+            Welcome to the photo gallery, click on an image to expand
+          </p>
+          
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div className="container">
+            <section id="lightbox" className="wrapper pt-8 pb-2">
+              <div className="row gy-10 light-gallery-wrapper">
+                {image.map((i) => (
+                  <div className="item col-md-2" key={i.public_id}>
+                    <figure className="lift rounded mb-3">
+                      <Image publicId={i.public_id} />
+                    </figure>
+
+                    <p>{i.context.custom.caption}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </CloudinaryContext>
+      </SRLWrapper>
+    </Layout>
+  );
 }
 
 export default Gallery;
