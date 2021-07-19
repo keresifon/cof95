@@ -21,7 +21,6 @@ function Gallery(props) {
     axios
       .get("https://res.cloudinary.com/kwesiblack/image/list/gallery.json")
       .then((res) => {
-        console.log(res.data.resources);
         setImage(res.data.resources);
       });
   }, []);
@@ -29,7 +28,6 @@ function Gallery(props) {
     return "Loading...";
   }
 
-  console.log("Image", image);
 
   return (
     <Layout>
