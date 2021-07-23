@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import b4 from "../../../component/img/photos/b4.jpg";
 import { Link } from "react-router-dom";
 
 
@@ -25,7 +24,7 @@ query {
   
 `;
 
-const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
+const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN ,REACT_APP_IMAGE_PLACE_HOLDER } = process.env;
 
 function RecentPosts(props) {
   const [page, setPage] = useState(null);
@@ -66,7 +65,7 @@ function RecentPosts(props) {
                     <figure className="rounded">
                       < Link to={`/blog/${p.slug}`}>
                       {p.image && <img src={p.image.url} alt="" />}
-                          {!p.image && <img src={b4} alt="" />}
+                          {!p.image && <img src={REACT_APP_IMAGE_PLACE_HOLDER} alt="" />}
                       </Link>
                     </figure>
                     <div className="post-content">
