@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 //import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Link, useParams } from "react-router-dom";
 import b4 from "../../../component/img/photos/b4.jpg";
-
 import _ from "lodash";
+import ReactPaginate from "react-paginate";
 
 const query = `
 query Page($category: [String] ){
@@ -38,6 +38,8 @@ const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
 function CategoryTemplate(props) {
   const [page, setPage] = useState(null);
   const params = useParams();
+  const [pageNumber, setPageNumber] = useState(0);
+
   useEffect(() => {
     window
       .fetch(
@@ -67,6 +69,54 @@ function CategoryTemplate(props) {
     return p.category[0] === params.category;
   });
 
+  const recordsPerPage = 9;
+  const pagesVisited = pageNumber * recordsPerPage;
+  const displayRecords = blogPost
+    .slice(pagesVisited, pagesVisited + recordsPerPage)
+    .map((o) => (
+      <article className="item post col-md-4" key={o.sys.id}>
+        <div className="card">
+          <figure className="card-img-top overlay overlay1 hover-scale">
+            <Link to={`/blog/${o.slug}`}>
+              {" "}
+              {o.image && <img src={o.image.url} alt="" />}
+              {!o.image && <img src={b4} alt="" />}
+            </Link>
+            <figcaption>
+              <h5 className="from-top mb-0">Read More</h5>
+            </figcaption>
+          </figure>
+          <div className="card-body">
+            <div className="post-header">
+              
+              <h2 className="post-title h3 mt-1 mb-3">
+                <Link className="link-dark" to={`/blog/${o.slug}`}>
+                  {o.title}
+                </Link>
+              </h2>
+            </div>
+            <div className="post-content">
+              <p>{o.excerpt}</p>
+            </div>
+          </div>
+          <div className="card-footer">
+            <ul className="post-meta d-flex mb-0">
+              <li className="post-date">
+                <i className="uil uil-calendar-alt"></i>
+                <span>{new Date(o.date).toDateString()}</span> <br />
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </article>
+    ))
+  const pageCount = Math.ceil(blogPost.length / recordsPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
+
+
   return (
     <div>
       <section className="wrapper bg-soft-primary">
@@ -74,19 +124,7 @@ function CategoryTemplate(props) {
           <div className="row">
             <div className="col-lg-8 mx-auto">
               <h1 className="display-1 mb-3">{params.category}</h1>
-              {/* <nav className="d-inline-block" aria-label="breadcrumb">
-                <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="breadcrumb-item">
-                    <Link to="#">Blocks</Link>
-                  </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Blog
-                  </li>
-                </ol>
-              </nav> */}
+
             </div>
           </div>
         </div>
@@ -100,54 +138,23 @@ function CategoryTemplate(props) {
           </p>
           <div className="blog grid grid-view">
             <div className="row isotope gx-md-8 gy-8 mb-8">
-              {blogPost.map((o) => (
-                <article className="item post col-md-4" key={o.sys.id}>
-                  <div className="card">
-                    <figure className="card-img-top overlay overlay1 hover-scale">
-                      <Link to={`/blog/${o.slug}`}>
-                        {" "}
-                        {o.image && <img src={o.image.url} alt="" />}
-                        {!o.image && <img src={b4} alt="" />}
-                      </Link>
-                      <figcaption>
-                        <h5 className="from-top mb-0">Read More</h5>
-                      </figcaption>
-                    </figure>
-                    <div className="card-body">
-                      <div className="post-header">
-                        {/* <div className="post-category text-line">
-                          <Link to="#" className="hover" rel="category">
-                            {o.category}
-                          </Link>
-                        </div> */}
-                        <h2 className="post-title h3 mt-1 mb-3">
-                          <Link className="link-dark" to={`/blog/${o.slug}`}>
-                            {o.title}
-                          </Link>
-                        </h2>
-                      </div>
-                      <div className="post-content">
-                        <p>{o.excerpt}</p>
-                      </div>
-                    </div>
-                    <div className="card-footer">
-                      <ul className="post-meta d-flex mb-0">
-                        <li className="post-date">
-                          <i className="uil uil-calendar-alt"></i>
-                          <span>{new Date(o.date).toDateString()}</span> <br />
-                        </li>
-                        {/* <li className="post-author">
-                    <Link to="#">
-                      <i className="uil uil-user"></i>
-                      <span>By {o.authorname}</span>
-                    </Link>
-                  </li> */}
-                      </ul>
-                    </div>
-                  </div>
-                </article>
-              ))}
+              {displayRecords}
               {/*  */}
+              <div className="pt-2">
+          <ReactPaginate
+            previousLabel={"Prev"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"pagination"}
+            previousLinkClassName={"page-link"}
+            pageClassName={"page-item"}
+            nextLinkClassName={"page-link"}
+            pageLinkClassName={"page-link"}
+            disabledClassName={"page-item disabled"}
+            activeClassName={"active"}
+          />
+        </div>
             </div>
           </div>
         </div>
