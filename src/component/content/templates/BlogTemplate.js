@@ -112,7 +112,7 @@ function BlogTemplate(props) {
       <section className="wrapper bg-light wrapper-border">
         <div className="container inner py-8">
           <div className="row gx-lg-8 gx-xl-12 gy-4 gy-lg-0">
-            <div className="col-md-8 align-self-center text-center text-md-start navigation">
+            {/* <div className="col-md-8 align-self-center text-center text-md-start navigation">
               <Link
                 to="/"
                 className="btn btn-sm btn-soft-ash rounded-pill btn-icon btn-icon-start mb-0 me-1"
@@ -125,8 +125,8 @@ function BlogTemplate(props) {
               >
                 Next Post <i className="uil uil-arrow-right"></i>
               </Link>
-            </div>
-            <aside className="col-lg-4 sidebar">
+            </div>*/}
+            {/* <aside className="col-lg-4 sidebar"> 
               <form className="search-form">
                 <div className="form-label-group mb-0">
                   <input
@@ -138,7 +138,7 @@ function BlogTemplate(props) {
                   <label htmlFor="search-form">Search</label>
                 </div>
               </form>
-            </aside>
+            </aside> */}
           </div>
         </div>
       </section>
