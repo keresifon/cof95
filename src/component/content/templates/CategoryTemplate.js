@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 //import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { Link, useParams } from "react-router-dom";
-import b4 from "../../../component/img/photos/b4.jpg";
 import _ from "lodash";
 import ReactPaginate from "react-paginate";
 
@@ -33,7 +32,7 @@ query Page($category: [String] ){
 
 `;
 
-const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
+const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN ,REACT_APP_IMAGE_PLACE_HOLDER } = process.env;
 
 function CategoryTemplate(props) {
   const [page, setPage] = useState(null);
@@ -80,7 +79,7 @@ function CategoryTemplate(props) {
             <Link to={`/blog/${o.slug}`}>
               {" "}
               {o.image && <img src={o.image.url} alt="" />}
-              {!o.image && <img src={b4} alt="" />}
+              {!o.image && <img src={REACT_APP_IMAGE_PLACE_HOLDER} alt="" />}
             </Link>
             <figcaption>
               <h5 className="from-top mb-0">Read More</h5>

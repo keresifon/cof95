@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import b4 from "../../component/img/photos/b4.jpg";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 
@@ -33,7 +32,7 @@ query {
   
 `;
 
-const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
+const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN,REACT_APP_IMAGE_PLACE_HOLDER } = process.env;
 
 function BlogBase(props) {
   const [page, setPage] = useState(null);
@@ -75,7 +74,7 @@ function BlogBase(props) {
             <Link to={`/blog/${o.slug}`}>
               {" "}
               {o.image && <img src={o.image.url} alt="" />}
-              {!o.image && <img src={b4} alt="" />}
+              {!o.image && <img src={REACT_APP_IMAGE_PLACE_HOLDER} alt="" />}
             </Link>
             <figcaption>
               <h5 className="from-top mb-0">Read More</h5>

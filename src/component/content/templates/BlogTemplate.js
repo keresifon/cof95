@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import b4 from "../../../component/img/photos/b4.jpg";
 import { Link, useParams } from "react-router-dom";
 import Categories from "../misc/Categories";
 import RecentPosts from "../misc/RecentPosts";
@@ -37,7 +36,7 @@ const query = `
   }
 `;
 
-const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
+const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN ,REACT_APP_IMAGE_PLACE_HOLDER } = process.env;
 
 function BlogTemplate(props) {
   const [page, setPage] = useState(null);
@@ -151,7 +150,7 @@ function BlogTemplate(props) {
                   {blogPost.map((p) => (
                     <figure className="card-img-top" key={p.sys.id}>
                       {p.image && <img src={p.image.url} alt="" />}
-                      {!p.image && <img src={b4} alt="" />}
+                      {!p.image && <img src={REACT_APP_IMAGE_PLACE_HOLDER} alt="" />}
                     </figure>
                   ))}
                   <div className="card-body">

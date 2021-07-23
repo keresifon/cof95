@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import b4 from "../../component/img/photos/b4.jpg";
 import { Link } from "react-router-dom";
 //import _ from "lodash"
 
@@ -32,7 +31,7 @@ query {
   
 `;
 
-const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN } = process.env;
+const { REACT_APP_SPACE_ID, REACT_APP_CDA_TOKEN ,REACT_APP_IMAGE_PLACE_HOLDER } = process.env;
 
 function BlogTop(props) {
     const [page, setPage] = useState(null);
@@ -61,7 +60,6 @@ function BlogTop(props) {
     return "Loading...";
   }
  
-  
 
     return (
         <div className="blog classic-view">
@@ -71,7 +69,7 @@ function BlogTop(props) {
                       <figure className="card-img-top overlay overlay1 hover-scale">
                         < Link to={`/blog/${p.slug}`}>
                           {p.image && <img src={p.image.url} alt="" />}
-                          {!p.image && <img src={b4} alt="" />}
+                          {!p.image && <img src={REACT_APP_IMAGE_PLACE_HOLDER} alt="" />}
                         </Link>
                         <figcaption>
                           <h5 className="from-top mb-0">Read More</h5>
