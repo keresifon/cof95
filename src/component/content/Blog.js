@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import BlogBase from "./BlogBase";
 import BlogTop from "./BlogTop";
 import Categories from "./misc/Categories";

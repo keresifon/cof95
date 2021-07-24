@@ -12,6 +12,7 @@ const query = `
   query Page($slug: String){
     blogCollection(where: { slug: $slug }) {
       items {
+        tag
         sys{
           id
         }
@@ -75,8 +76,8 @@ function BlogTemplate(props) {
   let title = _.map(blogPost, "title");
   let date = _.map(blogPost, "date");
   let authorname = _.map(blogPost, "authorname");
-  let tag = _.map(blogPost, "contentfulMetadata.tags");
-  let tname = _.flatten(tag)
+  let tag = _.map(blogPost, "tag");
+  console.log(tag)
 
   return (
     <div >
@@ -164,13 +165,13 @@ function BlogTemplate(props) {
                         <div className="post-footer d-md-flex flex-md-row justify-content-md-between align-items-center mt-8">
                           <div>
                             <ul className="list-unstyled tag-list mb-0">
-                            {tname.map((p ,uniqid) => (
-                              <li key={uniqid}>
+                            {blogPost.map((p) => (
+                              <li key={p.sys.id}>
                                 <Link 
-                                   to={`/tags/${p.name}`}
+                                   to={`/tags/${p.tag}`}
                                   className="btn btn-soft-ash btn-sm rounded-pill mb-0"
                                 >
-                                  {p.name}
+                                  {p.tag}
                                 </Link>
                               </li>
                             ))}
@@ -178,28 +179,7 @@ function BlogTemplate(props) {
                             </ul>
                           </div>
                           <div className="mb-0 mb-md-2">
-                            {/* <div className="dropdown share-dropdown btn-group">
-                              <button
-                                className="btn btn-sm btn-red rounded-pill btn-icon btn-icon-start dropdown-toggle mb-0 me-0"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i className="uil uil-share-alt"></i> Share{" "}
-                              </button>
-                              <div className="dropdown-menu">
-                                <Link className="dropdown-item" href="#">
-                                  <i className="uil uil-twitter"></i>Twitter
-                                </Link>
-                                <Link className="dropdown-item" href="#">
-                                  <i className="uil uil-facebook-f"></i>Facebook
-                                </Link>
-                                <Link className="dropdown-item" href="#">
-                                  <i className="uil uil-linkedin"></i>Linkedin
-                                </Link>
-                              </div>
-                            </div> */}
-                          </div>
+                           </div>
                         </div>
                       </article>
                     </div>
@@ -224,26 +204,6 @@ function BlogTemplate(props) {
               <Categories />
               <Tags />
               
-              {/* <div className="widget">
-                <h4 className="widget-title mb-3">Archive</h4>
-                <ul className="unordered-list bullet-primary text-reset">
-                  <li>
-                    <Link to="#">February 2019</Link>
-                  </li>
-                  <li>
-                    <Link to="#">January 2019</Link>
-                  </li>
-                  <li>
-                    <Link to="#">December 2018</Link>
-                  </li>
-                  <li>
-                    <Link to="#">November 2018</Link>
-                  </li>
-                  <li>
-                    <Link to="#">October 2018</Link>
-                  </li>
-                </ul>
-              </div> */}
             </aside>
           </div>
         </div>
