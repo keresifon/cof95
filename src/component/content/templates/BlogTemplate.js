@@ -224,7 +224,7 @@ function BlogTemplate(props) {
               <Categories />
               <Tags />
               
-              <div className="widget">
+              {/* <div className="widget">
                 <h4 className="widget-title mb-3">Archive</h4>
                 <ul className="unordered-list bullet-primary text-reset">
                   <li>
@@ -243,7 +243,7 @@ function BlogTemplate(props) {
                     <Link to="#">October 2018</Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </aside>
           </div>
         </div>

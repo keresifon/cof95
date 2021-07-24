@@ -128,7 +128,7 @@ function Blog(props) {
               <Categories />
               <Tags/>
               {/* <Tags/> */}
-              <div className="widget">
+              {/* <div className="widget">
                 <h4 className="widget-title mb-3">Archive</h4>
                 <ul className="unordered-list bullet-primary text-reset">
                   <li>
@@ -147,7 +147,7 @@ function Blog(props) {
                     < Link to="#">October 2018</Link>
                   </li>
                 </ul>
-              </div>
+              </div> */}
             </aside>
           </div>
         </div>
