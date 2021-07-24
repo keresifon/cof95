@@ -192,10 +192,7 @@ function BlogTemplate(props) {
               <div className="widget">
                 <h4 className="widget-title mb-3">About Us</h4>
                 <p>
-                  Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                  condimentum nibh, ut fermentum. Nulla vitae elit libero, a
-                  pharetra augue. Donec id elit non mi porta gravida at eget
-                  metus.
+                It was at a reception organized to receive one of our own, Henry Okechukwu Osokolo by the trio of Ernest Umeike, Kayode Sowade and Kayode Ajileye and attended by Gerald Ogbonna, Obinna Odiegwu, Aneto Okeke, Esomchi Nwofor and Victor Ineme that the inspiration behind reconnecting the Class of 1995 began. Thereafter, on the 23rd of August, a Whatsapp group was created by Gerald galvanizing 95ers from all corners of the globe.
                 </p>
                 
                 <div className="clearfix"></div>
