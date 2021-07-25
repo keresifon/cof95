@@ -4,14 +4,13 @@ import "../../../src/component/css/theme/aqua.css";
 import { SRLWrapper } from "simple-react-lightbox";
 import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 import axios from "axios";
-import ReactPaginate from "react-paginate"
+import ReactPaginate from "react-paginate";
 
 const { REACT_APP_CLOUD_NAME } = process.env;
 
 function Gallery(props) {
   const [image, setImage] = useState(null);
-  const [pageNumber, setPageNumber] = useState(0)
-
+  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     axios
@@ -23,39 +22,39 @@ function Gallery(props) {
   if (!image) {
     return "Loading...";
   }
-const recordsPerPage = 18
-const pagesVisited = pageNumber * recordsPerPage
+  const recordsPerPage = 18;
+  const pagesVisited = pageNumber * recordsPerPage;
 
-const displayRecords = image.slice(pagesVisited, pagesVisited + recordsPerPage).map((i) => (
-  <div className="item col-md-2" key={i.public_id}>
-    <figure className="lift rounded mb-3">
-      <Image publicId={i.public_id}>
-        <Transformation
-          quality="75"
-          fetchFormat="auto"
-          dpr="auto"
-          responsive
-          //width="auto"
-          //crop="scale"
-        />
-      </Image>
-      
-    </figure>
+  const displayRecords = image
+    .slice(pagesVisited, pagesVisited + recordsPerPage)
+    .map((i) => (
+      <div className="item col-md-2" key={i.public_id}>
+        <figure className="lift rounded mb-3">
+          <Image publicId={i.public_id}>
+            <Transformation
+              quality="75"
+              fetchFormat="auto"
+              dpr="auto"
+              responsive
+              //width="auto"
+              //crop="scale"
+            />
+          </Image>
+        </figure>
 
-    <p>{i.context.custom.caption}</p>
-  </div>
-));
-const pageCount = Math.ceil(image.length/recordsPerPage)
-const changePage = ({selected}) => {
-  setPageNumber(selected)
-};
+        <p>{i.context.custom.caption}</p>
+      </div>
+    ));
+  const pageCount = Math.ceil(image.length / recordsPerPage);
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   return (
     <Layout>
       <SRLWrapper>
         <CloudinaryContext cloud_name={REACT_APP_CLOUD_NAME}>
           <div>
-            
             <section className="wrapper bg-soft-primary">
               <div className="container pt-10 pb-2 pt-md-10 pb-md-10 text-center">
                 <div className="row">
@@ -70,27 +69,26 @@ const changePage = ({selected}) => {
             </section>
           </div>
           <div className="container">
-          <div className="pt-2">
-              <ReactPaginate 
-                 previousLabel={"Prev"}
-                 nextLabel={"Next"}
-                 pageCount={pageCount}
-                 onPageChange={changePage}
-                 containerClassName={"pagination"}
-                 previousLinkClassName={"page-link"}
-                 pageClassName={"page-item"}
-                 nextLinkClassName={"page-link"}
-                 pageLinkClassName={"page-link"}
-                 disabledClassName={"page-item disabled"}
-                 activeClassName={"active"}
-              
-              /></div>
+            <div className="pt-2">
+              <ReactPaginate
+                previousLabel={"Prev"}
+                nextLabel={"Next"}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"pagination"}
+                previousLinkClassName={"page-link"}
+                pageClassName={"page-item"}
+                nextLinkClassName={"page-link"}
+                pageLinkClassName={"page-link"}
+                disabledClassName={"page-item disabled"}
+                activeClassName={"active"}
+              />
+            </div>
             <section id="lightbox" className="wrapper pt-8 pb-2">
               <div className="row gy-10 light-gallery-wrapper">
                 {displayRecords}
               </div>
             </section>
-           
           </div>
         </CloudinaryContext>
       </SRLWrapper>
