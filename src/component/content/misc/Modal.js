@@ -21,7 +21,7 @@ function Modals(props) {
               //width={171}
               //height={180}
               //alt="171x180"
-              src="https://res.cloudinary.com/kwesiblack/image/upload/v1628778231/cof95/WhatsApp_Image_2021-08-12_at_1.58.41_PM_2_w2q4xg.jpg"
+              src="https://res.cloudinary.com/kwesiblack/image/upload/v1628783590/cof95/WhatsApp_Image_2021-08-12_at_4.50.02_PM_rcxxaz.jpg"
             /></Link>
             <Figure.Caption>
               Click Image for Details
