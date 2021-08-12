@@ -1,5 +1,5 @@
 import React, { useState, useEffect , useContext } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import Amplify from 'aws-amplify';
 import awsconfig from '../aws-exports';
@@ -55,7 +55,7 @@ console.log(count)
 											<i className="uil uil-facebook-f"></i>
 										</a>
 										
-									</nav><Link to="#" class="more hover link-violet">Learn More</Link>
+									 </nav>{/*<Link to="#" class="more hover link-violet">Learn More</Link> */}
 									</div>
 								</div>
 							</div>
