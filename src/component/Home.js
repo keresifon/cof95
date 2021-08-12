@@ -77,7 +77,11 @@ function Home(props) {
                               <i className="uil uil-users-alt"></i>
                             </div>
                             <div>
-                              <h3 className="counter mb-0 text-nowrap"><a href="https://www.cof95.org/con/lagos-2020-21" >Lagos 2020 (21)!!!</a></h3>
+                              <h3 className="counter mb-0 text-nowrap">
+                                <Link to="con/lagos-2020-21">
+                                  Lagos 2020 (21)!!!
+                                </Link>
+                              </h3>
                             </div>
                           </div>
                           {/* <div>
