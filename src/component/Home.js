@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "./Layout";
 import _ from "lodash";
+import Modals from "./content/misc/Modal";
 
 const query = `query {
   homeCollection{
@@ -51,6 +52,8 @@ function Home(props) {
 
   return (
     <Layout>
+            <Modals />
+
       <div>
         <div className="container ">
           <div className="card bg-soft-primary rounded-4 mt-2 mb-5 mb-md-17">
