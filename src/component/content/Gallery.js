@@ -5,20 +5,25 @@ import { SRLWrapper } from "simple-react-lightbox";
 import { CloudinaryContext, Image, Transformation } from "cloudinary-react";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
+import { useParams } from "react-router-dom";
+import _ from "lodash";
 
 const { REACT_APP_CLOUD_NAME } = process.env;
 
 function Gallery(props) {
   const [image, setImage] = useState(null);
   const [pageNumber, setPageNumber] = useState(0);
+  const params = useParams();
+
+  let loca = _.map(params);
 
   useEffect(() => {
     axios
-      .get("https://res.cloudinary.com/kwesiblack/image/list/gallery.json")
+      .get(`https://res.cloudinary.com/kwesiblack/image/list/${loca}.json`)
       .then((res) => {
         setImage(res.data.resources);
       });
-  }, []);
+  }, [loca]);
   if (!image) {
     return "Loading...";
   }

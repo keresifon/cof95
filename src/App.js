@@ -34,7 +34,7 @@ function App() {
               <Route path="/con/:slug" component={HomeTemplate} />
               <Route path="/blog/:slug" component={BlogTemplate} />
               <Route path="/blog" component={Blog} />
-              <Route path="/gallery" component={Gallery} />
+              <Route path="/gallery/:location" component={Gallery} />
               <Route path="/finstatement" component={AccSatement} />
               <Route path="/members" component={Members} />
               <Route path="/uprofile" component={ProfileUpdate} />
