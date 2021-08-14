@@ -45,6 +45,10 @@ function NavBar(props) {
               <NavDropdown.Item as={Link} to="/gallery/lagosone">
                 20 Years Later
               </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/gallery/ph">
+                PH Reunion
+              </NavDropdown.Item>
+            
             </NavDropdown>
             <NavDropdown title="Category" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/category/Profile">
