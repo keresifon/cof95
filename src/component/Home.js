@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "./Layout";
 import _ from "lodash";
-import Modals from "./content/misc/Modal";
+//import Modals from "./content/misc/Modal";
 
 const query = `query {
   homeCollection{
@@ -52,7 +52,7 @@ function Home(props) {
 
   return (
     <Layout>
-            <Modals />
+            {/* <Modals /> */}
 
       <div>
         <div className="container ">
@@ -81,9 +81,9 @@ function Home(props) {
                             </div>
                             <div>
                               <h3 className="counter mb-0 text-nowrap">
-                                <Link to="con/lagos-2020-21">
-                                  Lagos 2020 (21)!!!
-                                </Link>
+                                
+                                  100+
+                               
                               </h3>
                             </div>
                           </div>
